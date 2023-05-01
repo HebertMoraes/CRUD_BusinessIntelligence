@@ -1,0 +1,70 @@
+.content-courseware {
+  width: 100%;
+  height: 519px;
+  background-color: #FFFFFF;
+  margin-top: 48px;
+  margin-bottom: 48px;
+  padding-left: 72px;
+  padding-top: 56px;
+  overflow: hidden;
+}
+.content-courseware .details-courseware {
+  width: 100%;
+  margin-bottom: 45px;
+}
+.content-courseware .details-courseware .navigate-content {
+  width: 100%;
+}
+.content-courseware .details-courseware .navigate-content .weeks-navigate {
+  margin-bottom: 16px;
+}
+.content-courseware .details-courseware .navigate-content .weeks-navigate .weeks {
+  padding: 4px 8px 4px 8px;
+  background-color: #E4EBFB;
+  border-radius: 25px;
+  margin-right: 15px;
+}
+.content-courseware .details-courseware .navigate-content .weeks-navigate .weeks span {
+  font-family: Roboto;
+  font-size: 16px;
+  color: #7183A6;
+}
+.content-courseware .details-courseware .navigate-content .weeks-navigate .arrow-left-weeks {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+.content-courseware .details-courseware .navigate-content .weeks-navigate .arrow-right-weeks {
+  width: 20px;
+  height: 20px;
+}
+.content-courseware .details-courseware .navigate-content .tittle-content {
+  font-family: Roboto;
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #354564;
+}
+.content-courseware .details-courseware .navigate-content .sub-tittle-content {
+  font-family: Roboto;
+  font-size: 16px;
+  color: #7183A6;
+}
+.content-courseware .details-courseware .block-right-content {
+  width: 100%;
+  padding-right: 72px;
+}
+.content-courseware .details-courseware .block-right-content .button-right {
+  padding: 16px 24px 16px 24px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  background-color: #FFFFFF;
+}
+.content-courseware .details-courseware .block-right-content .button-right .icon-btn-right {
+  margin-right: 8px;
+}
+.content-courseware .details-courseware .block-right-content .button-right .btn-txt {
+  font-size: 16px;
+  font-family: Roboto;
+  font-weight: bold;
+}/*# sourceMappingURL=content-carrousel.component.css.map */

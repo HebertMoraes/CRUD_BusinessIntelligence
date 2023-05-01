@@ -1,0 +1,18 @@
+<div class="frame">
+    <img src="assets/login-page/trakto-orange-logo.svg" alt="" class="img-logo">
+    <p class="tittle-login">
+        Olá, faça login em sua conta.
+    </p>
+
+    <form [formGroup]="formLogin">
+        <div class="header-text-box">E-mail</div>
+        <input type="email" class="text-box" formControlName="email">
+
+        <div class="header-text-box">Senha</div>
+        <input type="password" class="text-box" formControlName="password">
+
+        <button class="btn-login" [disabled]="!formLogin.valid" (click)="submitAuthentication()">
+            Entrar
+        </button>
+    </form>
+</div>

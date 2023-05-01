@@ -1,0 +1,15 @@
+<div class="module d-grid">
+    <div class="tittle-module d-grid justify-content-center" (click)="this.clicked.emit()">
+        <div class="text-tittle">{{textTittle}}</div>
+        <div class="d-flex justify-content-center">
+            <div class="divisor-tittle" [ngStyle]="{'background-color': colorDivisorTittle}"></div>
+        </div>
+    </div>
+    <span class="circle-bigger d-flex justify-content-center align-items-center" (click)="this.clicked.emit()">
+        <div class="circle-inside" (click)="this.clicked.emit()"
+        [ngStyle]="{'background-image': 'url(' + circleBgPath + ')'}">
+            <img src="{{imageCenterPath}}" alt="" (click)="this.clicked.emit()"
+            [ngStyle]="{'height': '234px', 'width': '240px', 'margin-left': '10px'}">
+        </div>
+    </span>
+</div>

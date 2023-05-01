@@ -1,0 +1,27 @@
+.module {
+  margin-inline: 40px;
+}
+.module .tittle-module .text-tittle {
+  color: white;
+  font-size: 30px;
+  font-family: Poppins;
+}
+.module .tittle-module .divisor-tittle {
+  width: 28px;
+  height: 4px;
+  margin-bottom: 32px;
+}
+.module .circle-bigger {
+  height: 300px;
+  width: 300px;
+  background-color: #464141;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.module .circle-bigger .circle-inside {
+  width: 85%;
+  height: 85%;
+  background-repeat: no-repeat;
+  margin-left: 5px;
+  margin-top: 5px;
+}/*# sourceMappingURL=module-content.component.css.map */

@@ -1,0 +1,39 @@
+.frame {
+  width: 300px;
+  height: 345px;
+  background-color: #F5F5F5;
+}
+.frame .img-logo {
+  width: 130px;
+  height: 30px;
+  margin-bottom: 40px;
+}
+.frame .tittle-login {
+  font-family: Roboto;
+}
+.frame .header-text-box {
+  font-family: Roboto;
+  color: #0095FF;
+  font-size: 12px;
+  margin-top: 24px;
+}
+.frame .text-box {
+  width: 300px;
+  height: 48px;
+  border-radius: 4px;
+  border: 1px solid #E4EBFB;
+  padding: 16px;
+  outline: none;
+}
+.frame .text-box:focus {
+  border-color: #66BFFF;
+}
+.frame .btn-login {
+  margin-top: 24px;
+  background: #1DC763;
+  border-radius: 4px;
+  width: 300px;
+  height: 48px;
+  font-family: Roboto;
+  border: none;
+}/*# sourceMappingURL=login-frame.component.css.map */

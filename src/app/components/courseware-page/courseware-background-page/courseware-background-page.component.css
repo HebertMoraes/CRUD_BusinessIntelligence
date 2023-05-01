@@ -1,0 +1,12 @@
+.courseware-page {
+  background-color: #EFF2F9;
+  padding-inline: 64px;
+  padding-top: 32px;
+  padding-bottom: 48px;
+}
+.courseware-page .image-courseware-page {
+  width: 100%;
+}
+.courseware-page .image-courseware-page img {
+  width: 100%;
+}/*# sourceMappingURL=courseware-background-page.component.css.map */

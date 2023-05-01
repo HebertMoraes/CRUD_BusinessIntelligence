@@ -1,0 +1,30 @@
+<app-header 
+    [colorBackground]="'#FFFFFF'" 
+    [colorOfElements]="'#7183A6'" 
+    [enableChangeEnvironment]="true"
+    [iconChangeEnvironmentPath]="'assets/comum-assets/header/icon-changeEnvironment.svg'"
+    [icon1Path]="'assets/comum-assets/header/trakto-edu-logo-dark.svg'"
+    [icon2Path]="'assets/comum-assets/header/calendar-icon-gray.svg'"
+    [icon3Path]="'assets/comum-assets/header/bell-icon-gray.svg'"
+    [iconProfilePath]="'assets/comum-assets/header/Alexa-icon.png'"
+    [icon4Path]="'assets/comum-assets/header/arrow-button-down-2-gray.svg'">
+</app-header>
+
+<div class="all-design-page">
+    <div class="block-all-design d-grid">
+        <div class="tittle">Material didático</div>
+        <div class="sub-tittle">Acesse suas últimas apresentações de aula.</div>
+        <div class="d-flex flex-wrap">
+            
+            <app-design-thumb *ngFor="let design of designsThumbsToShow" 
+                [tittle]="design.title"
+                [urlImgThumb]="design.thumbs.low" 
+                [numberSlides]="design.pages" 
+                [idDesign]="design.id" 
+                [widthComponent]="'225px'" 
+                (goToEdit)="goToEditDesign($event)" >
+            </app-design-thumb>
+
+        </div>
+    </div>
+</div>

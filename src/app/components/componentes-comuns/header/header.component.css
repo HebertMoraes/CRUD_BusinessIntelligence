@@ -1,0 +1,48 @@
+.header-comum {
+  height: 76px;
+}
+.header-comum .logo-header {
+  width: 143px;
+  height: 56px;
+  margin-left: 65px;
+}
+.header-comum .change-environment {
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 1px;
+  padding: 0px;
+  padding-top: 16.5px;
+  padding-bottom: 16.5px;
+  margin-left: 56px;
+}
+.header-comum .change-environment .icon-change-environment {
+  margin-left: 24px;
+  margin-right: 8px;
+}
+.header-comum .change-environment .txt-change-environment {
+  margin-right: 24px;
+  font-size: 20px;
+  font-family: Roboto;
+}
+.header-comum .options {
+  margin-right: 64px;
+}
+.header-comum .options .calendar .calendar-icon {
+  margin-right: 8px;
+}
+.header-comum .options .calendar .date-text {
+  margin-right: 32px;
+}
+.header-comum .options .bell-icon {
+  margin-inline: 36px;
+}
+.header-comum .options .icon-profile {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+  margin-left: 32px;
+}
+.header-comum .options .divisor-line {
+  width: 1px;
+  height: 24px;
+}/*# sourceMappingURL=header.component.css.map */
