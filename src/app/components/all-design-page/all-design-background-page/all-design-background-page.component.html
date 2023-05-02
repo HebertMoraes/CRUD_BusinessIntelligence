@@ -16,14 +16,18 @@
         <div class="sub-tittle">Acesse suas últimas apresentações de aula.</div>
         <div class="d-flex flex-wrap">
             
-            <app-design-thumb *ngFor="let design of designsThumbsToShow" 
+            <!-- <app-design-thumb *ngFor="let design of designsThumbsToShow" 
                 [tittle]="design.title"
                 [urlImgThumb]="design.thumbs.low" 
                 [numberSlides]="design.pages" 
                 [idDesign]="design.id" 
                 [widthComponent]="'225px'" 
                 (goToEdit)="goToEditDesign($event)" >
-            </app-design-thumb>
+            </app-design-thumb> -->
+
+            <iframe title="TesteDadosExemploPWBI" width="1140" height="541.25" 
+            src="https://app.powerbi.com/reportEmbed?reportId=3b9264c9-5128-4077-96c8-ef3505cfb24e&autoAuth=true&embeddedDemo=true" 
+            frameborder="0" allowFullScreen="true"></iframe>
 
         </div>
     </div>
