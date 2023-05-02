@@ -17,9 +17,9 @@ import { LoginPageRoutingModule } from './login-page-routing.module';
     ReactiveFormsModule,
     LoginPageRoutingModule
   ], 
-  exports: [
-    LoginFrameComponent,
-    LoginBackgroundPageComponent,
-  ]
+  // exports: [
+  //   LoginFrameComponent,
+  //   LoginBackgroundPageComponent,
+  // ]
 })
 export class LoginPageModule { }

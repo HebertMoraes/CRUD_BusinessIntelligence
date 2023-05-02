@@ -22,13 +22,15 @@
                 [circleBgPath]="'../../../assets/opening-page/bg-quiz.png'" 
                 [imageCenterPath]="'assets/opening-page/medal.png'"
                 [textTittle]="'Suas Vendas'"
-                [colorDivisorTittle]="'#1DC763'">
+                [colorDivisorTittle]="'#1DC763'"
+                (clicked)="goToSeeSales()">
             </app-module-content>
             <app-module-content 
                 [circleBgPath]="'../../../assets/opening-page/bg-drawing.png'" 
                 [imageCenterPath]="'assets/opening-page/paint-1.png'"
                 [textTittle]="'Dashboard'"
-                [colorDivisorTittle]="'#F6B5FF'">
+                [colorDivisorTittle]="'#F6B5FF'"
+                (clicked)="goToDashboard()">
             </app-module-content>
             <app-module-content 
                 [circleBgPath]="'../../../assets/opening-page/bg-youtube.png'" 

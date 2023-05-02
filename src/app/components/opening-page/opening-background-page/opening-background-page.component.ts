@@ -13,6 +13,14 @@ export class OpeningBackgroundPageComponent {
   }
 
   goToCoursewarePage(){
-    this.router.navigateByUrl('/materiais-didaticos');
+    this.router.navigateByUrl('/criar-venda');
+  }
+
+  goToSeeSales(){
+    this.router.navigateByUrl('/minhas-vendas');
+  }
+
+  goToDashboard() {
+    this.router.navigateByUrl('/dashboard-vendas');
   }
 }

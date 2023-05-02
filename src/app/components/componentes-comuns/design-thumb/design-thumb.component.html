@@ -1,9 +1,0 @@
-<div class="design d-grid" [ngStyle]="{'width': widthComponent}">
-    <div class="design-thumb d-flex" [ngStyle]="{'background-image': 'url(' + urlImgThumb + ')'}" 
-    (click)="goToEdit.emit(idDesign)">
-        <div class="number-slides mt-auto text-center">
-            {{numberSlidesToShow}} Slides
-        </div>
-    </div>
-    <div class="design-tittle" (click)="goToEdit.emit(idDesign)">{{tittle}}</div>
-</div>

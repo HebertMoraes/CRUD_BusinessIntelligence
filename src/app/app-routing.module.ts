@@ -22,19 +22,25 @@ const routes: Routes = [
     loadChildren: () => import('./components/opening-page/opening-page.module')
       .then(m => m.OpeningPageModule), 
     canActivate: [AuthGuard]
-  }, 
+  },
   { 
-    path: 'materiais-didaticos',
-    loadChildren: () => import('./components/courseware-page/courseware-page.module')
-      .then(m => m.CoursewarePageModule), 
+    path: 'criar-venda',
+    loadChildren: () => import('./components/create-sale-page/create-sale-page.module')
+      .then(m => m.CreateSalePageModule), 
     canActivate: [AuthGuard]
-  }, 
+  },
   { 
-    path: 'ver-todos-materiais',
-    loadChildren: () => import('./components/all-design-page/all-design-page.module')
-      .then(m => m.AllDesignPageModule), 
+    path: 'minhas-vendas',
+    loadChildren: () => import('./components/see-sales-page/see-sales-page.module')
+      .then(m => m.SeeSalesPageModule), 
     canActivate: [AuthGuard]
-  }, 
+  },
+  { 
+    path: 'dashboard-vendas',
+    loadChildren: () => import('./components/dashboard-page/dashboard-page.module')
+      .then(m => m.DashboardPageModule), 
+    canActivate: [AuthGuard]
+  },
   { path: '**', redirectTo: 'login' }
 ];
 
