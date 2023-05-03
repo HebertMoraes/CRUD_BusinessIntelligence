@@ -21,21 +21,7 @@ export class CreateSaleBlockComponent {
   }
 
   ngOnInit() {
-    // this.salesService.updateSale(
-    //   15,
-    //   "alteradoo", 
-    //   "alteradoo", 
-    //   12, 
-    //   "alteradoo", 
-    //   "alteradoo", 
-    //   5.5, 
-    //   "05/03/2023"
-    // ).subscribe((res) => {
-    //   console.log(res);
-    // }); 
-    this.salesService.deleteSale(17).subscribe((res) => {
-      console.log(res);
-    })
+    
   }
 
   public gerateFormCreateSale(): FormGroup {
@@ -56,6 +42,16 @@ export class CreateSaleBlockComponent {
 
     this.formCreateSale.reset;
 
-    console.log(this.formCreateSale);
+    this.salesService.createSale(
+      nameCar, 
+      descriptionSale, 
+      numberCars, 
+      nameBuyer, 
+      nameSeller, 
+      totalValueSale, 
+      dateCriation
+    ).subscribe((res) => {
+      console.log(res);
+    }); 
   }
 }

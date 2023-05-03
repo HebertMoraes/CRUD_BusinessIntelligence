@@ -42,7 +42,7 @@ export class SalesService {
     Valor: number,
     DataCriacao: string
   ) {
-    return this.http.post(urlBaseBackEnd + "CreateSale",
+    return this.http.post<Sale>(urlBaseBackEnd + "CreateSale",
       {
         NomeCarro,
         Descricao,
@@ -69,7 +69,7 @@ export class SalesService {
     Valor: number,
     DataCriacao: string
   ) {
-    return this.http.post(urlBaseBackEnd + "UpdateSale",
+    return this.http.post<Sale>(urlBaseBackEnd + "UpdateSale",
       {
         Id, 
         NomeCarro,

@@ -1,0 +1,57 @@
+<div class="see-sales-block">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome Carro</th>
+                <th>Quantidade</th>
+                <th>Nome Comprador</th>
+                <th>Nome Vendedor</th>
+                <th>Valor</th>
+                <th>Data Criação</th>
+                <th>Observações</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sale of allSales">
+                <td>{{sale.Id}}</td>
+                <td>{{sale.NomeCarro}}</td>
+                <td>{{sale.Quantidade}}</td>
+                <td>{{sale.NomeComprador}}</td>
+                <td>{{sale.NomeVendedor}}</td>
+                <td>{{sale.Valor}}</td>
+                <td>{{sale.DataCriacao}}</td>
+                <button type="button" class="btn btn-primary" 
+                data-bs-toggle="modal" data-bs-target="#modalDescricao"
+                (click)="txtDescricaoSale = sale.Descricao">
+                    Ver Observações
+                </button>
+                <td>
+                    <button>
+                        <img src="assets/see-all-sales-page/icons8-actualizar.svg" 
+                        style="height: 24px; width: 24px;">
+                    </button>
+                    <button>
+                        <img src="assets/see-all-sales-page/icons8-lixo.svg">
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalDescricao" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Observações da venda</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                {{txtDescricaoSale}}
+            </div>
+        </div>
+    </div>
+</div>
