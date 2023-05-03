@@ -1,1 +1,16 @@
-<p>create-sale-background-page works!</p>
+<div class="create-sale d-flex flex-column">
+    <app-header 
+        [colorBackground]="'#252323'" 
+        [colorOfElements]="'#E4EBFB'" 
+        [enableChangeEnvironment]="false"
+        [icon1Path]="'assets/comum-assets/header/trakto-edu-logo-dark.svg'"
+        [icon2Path]="'assets/comum-assets/header/calendar-icon.svg'"
+        [icon3Path]="'assets/comum-assets/header/bell-icon.svg'"
+        [iconProfilePath]="'assets/comum-assets/header/Alexa-icon.png'"
+        [icon4Path]="'assets/comum-assets/header/arrow-button-down-2.svg'">
+    </app-header>
+
+    <div class="create-sale-block-background">
+        <app-create-sale-block></app-create-sale-block>
+    </div>
+</div>

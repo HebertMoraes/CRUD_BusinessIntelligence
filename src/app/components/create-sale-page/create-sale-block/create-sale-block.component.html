@@ -1,0 +1,51 @@
+<form class="create-sale-block" [formGroup]="formCreateSale">
+
+    <div class="d-flex first-fields">
+        <div class="form-floating">
+            <input type="text" class="form-control" id="f-nome-carro" placeholder="Insira o nome"
+                formControlName="nameCar">
+            <label for="f-nome-carro">Nome do Carro</label>
+        </div>
+        <div class="form-floating">
+            <input type="number" id="f-quantidade-carro" class="form-control" 
+            formControlName="numberCars">
+            <label class="form-label" for="f-quantidade-carro">Quantidade de Carros</label>
+        </div>
+        <div class="">
+            <label for="f-data-criacao">Data da Venda</label>
+            <input id="f-data-criacao" class="form-control" type="date" 
+            formControlName="dateCriation">
+        </div>
+    </div>
+
+    <div class="d-flex second-fields">
+        <div class="form-floating">
+            <input type="text" class="form-control" id="f-nome-comprador" placeholder="Insira o nome"
+                formControlName="nameBuyer">
+            <label for="f-nome-comprador">Nome do Comprador</label>
+        </div>
+        <div class="form-floating">
+            <input type="text" class="form-control" id="f-nome-vendedor" placeholder="Insira o nome"
+                formControlName="nameSeller">
+            <label for="f-nome-vendedor">Nome do Vendedor</label>
+        </div>
+    </div>
+    <div class="d-flex flex-column third-fields">
+        <label>Observação</label>
+        <textarea class="form-control" aria-label="With textarea"
+        formControlName="descriptionSale"></textarea>
+    </div>
+
+    <div class="d-flex fourth-fields justify-content-between">
+        <div class="input-group">
+            <span class="input-group-text">$</span>
+            <div class="form-floating">
+                <input type="number" id="f-valor-total" class="form-control" 
+                formControlName="totalValueSale">
+                <label class="form-label" for="f-valor-total">Valor Total da Venda</label>
+            </div>
+            <span class="input-group-text">,00</span>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="submitCreateSale()">Finalizar Venda</button>
+    </div>
+</form>

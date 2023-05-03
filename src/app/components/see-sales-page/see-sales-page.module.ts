@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SeeSalesBackgroundPageComponent } from './see-sales-background-page/see-sales-background-page.component';
+import { SeeSalesPageRoutingModule } from './see-sales-page-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { SeeSalesBackgroundPageComponent } from './see-sales-background-page/see
     SeeSalesBackgroundPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, 
+    SeeSalesPageRoutingModule
   ]
 })
 export class SeeSalesPageModule { }
