@@ -11,6 +11,7 @@ export class SeeSalesBlockComponent {
 
   allSales!: Sale[];
   txtDescricaoSale!: string;
+  currentSaleOnUpdate!: Sale;
 
   constructor(private salesService: SalesService) {
 
@@ -20,5 +21,11 @@ export class SeeSalesBlockComponent {
     this.salesService.getAll().subscribe((sales) => {
       this.allSales = sales;
     })
+  }
+
+  deleteSale(sale: Sale) {
+    var indiceToRemove = this.allSales.indexOf(sale);
+    this.allSales.splice(indiceToRemove, 1);
+    this.salesService.deleteSale(sale.Id).subscribe();
   }
 }

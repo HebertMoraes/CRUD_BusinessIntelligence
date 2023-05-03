@@ -28,11 +28,12 @@
                     Ver Observações
                 </button>
                 <td>
-                    <button>
+                    <button data-bs-toggle="modal" data-bs-target="#modalRefresh"
+                    (click)="currentSaleOnUpdate = sale">
                         <img src="assets/see-all-sales-page/icons8-actualizar.svg" 
                         style="height: 24px; width: 24px;">
                     </button>
-                    <button>
+                    <button (click)="deleteSale(sale)">
                         <img src="assets/see-all-sales-page/icons8-lixo.svg">
                     </button>
                 </td>
@@ -43,7 +44,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="modalDescricao" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Observações da venda</h5>
@@ -52,6 +53,24 @@
             <div class="modal-body">
                 {{txtDescricaoSale}}
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalRefresh" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Alterar Dados da Venda</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <app-update-sale-block [currentSaleOnUpdate]="currentSaleOnUpdate"></app-update-sale-block>
+            </div>
+            <!-- <div class="modal-footer">
+                footer para botoes
+            </div> -->
         </div>
     </div>
 </div>
