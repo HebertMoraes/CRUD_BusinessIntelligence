@@ -14,8 +14,10 @@
     <div class="cars-block-background">
         <app-car-block *ngFor="let car of carsToShow" 
             [defaultImage]="'assets/cars-page/default-lazy-load.png'"
-            [image]="'https://media.pitchfork.com/photos/631f48a864fa5057c9617ce4/4:3/w_1332,h_999,c_limit/Alex-G-header.jpg'"
+            [image]="car.ImgUrl"
             [name]="car.Nome"
+            [marca]="car.Marca"
+            [year]="car.Ano"
             [value]="car.Valor"
             [description]="car.Descricao">
         </app-car-block>

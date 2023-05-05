@@ -9,6 +9,8 @@ export class CarBlockComponent {
   @Input() defaultImage!: string;
   @Input() image!: string;
   @Input() name!: string;
+  @Input() marca!: string;
+  @Input() year!: number;
   @Input() value!: number;
   @Input() description!: string;
 }
