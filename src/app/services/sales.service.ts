@@ -11,9 +11,9 @@ const urlBaseBackEnd = environment.urlBaseBackEnd;
 })
 export class SalesService {
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { 
+    
+  }
 
   getAll() {
     return this.http.get<Sale[]>(urlBaseBackEnd + "GetAllSales", { responseType: 'json' }).pipe(
