@@ -23,4 +23,8 @@ export class OpeningBackgroundPageComponent {
   goToDashboard() {
     this.router.navigateByUrl('/dashboard-vendas');
   }
+
+  goToCarsPage() {
+    this.router.navigateByUrl('/carros');
+  }
 }

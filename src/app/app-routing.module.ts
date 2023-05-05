@@ -41,6 +41,12 @@ const routes: Routes = [
       .then(m => m.DashboardPageModule), 
     canActivate: [AuthGuard]
   },
+  { 
+    path: 'carros',
+    loadChildren: () => import('./components/cars-page/cars-page.module')
+      .then(m => m.CarsPageModule), 
+    canActivate: [AuthGuard]
+  },
   { path: '**', redirectTo: 'login' }
 ];
 
