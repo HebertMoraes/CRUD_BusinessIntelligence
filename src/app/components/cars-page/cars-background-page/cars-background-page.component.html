@@ -11,7 +11,7 @@
         [icon4Path]="'assets/comum-assets/header/arrow-button-down-2-gray.svg'">
     </app-header>
 
-    <div class="cars-block-background">
+    <div class="cars-block-background d-flex">
         <app-car-block *ngFor="let car of carsToShow" 
             [defaultImage]="'assets/cars-page/default-lazy-load.png'"
             [image]="car.ImgUrl"
