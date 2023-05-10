@@ -2,16 +2,24 @@
     <div class="img-car">
         <img [defaultImage]="defaultImage" [lazyLoad]="image" />
     </div>
-    <div class="info-car">
-        {{name}}
-        <br>
-        {{value}}
-        <br>
-        {{description}}
-        <br>
-        {{marca}}
-        <br>
-        {{year}}
+    <div class="info-car d-flex flex-column">
+        <div class="name">
+            {{name}}
+        </div>
+        <div class="value">
+            Valor: {{value}}
+        </div>
+        <div class="description-car">
+            {{description}}
+        </div>
+        <div class="marca-e-ano d-flex">
+            <div class="marca">
+                Marca: {{marca}} 
+            </div>
+            <div class="ano">
+                Ano: {{year}}
+            </div>
+        </div>
     </div>
 </div>
 
