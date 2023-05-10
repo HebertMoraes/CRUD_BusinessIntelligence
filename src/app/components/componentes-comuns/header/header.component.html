@@ -1,23 +1,23 @@
 <header class="header-comum d-flex align-items-center" [ngStyle]="{'background-color':colorBackground}">
-    <img src="{{icon1Path}}" class="logo-header" alt="">
+    <img src="{{icon1Path}}" class="logo-header" alt="" (click)="goToOpeningPage()">
 
     <button *ngIf="enableChangeEnvironment" class="change-environment d-flex align-items-center" 
         [ngStyle]="{'background-color': colorBackground, 'border-color': colorOfElements}"
         (click)="goToOpeningPage()">
         <img src="{{iconChangeEnvironmentPath}}" class="icon-change-environment" alt="">
         <span  class="txt-change-environment" [ngStyle]="{'color': colorOfElements}">
-            Trocar de Ambiente
+            Voltar
         </span>
     </button>
 
     <div class="options d-flex justify-content-end ms-auto p-2">
-        <div class="calendar d-flex align-items-center">
+        <!-- <div class="calendar d-flex align-items-center">
             <img src="{{icon2Path}}" class="calendar-icon" alt="">
             <div class="date-text" [ngStyle]="{'color': colorOfElements}">08/02/2023</div>
         </div>
-        <div class="divisor-line align-self-center" [ngStyle]="{'background-color': colorOfElements}"></div>
+        <div class="divisor-line align-self-center" [ngStyle]="{'background-color': colorOfElements}"></div> -->
         <img src="{{icon3Path}}" class="bell-icon" alt="">
-        <div class="divisor-line align-self-center" [ngStyle]="{'background-color': colorOfElements}"></div>
+        <!-- <div class="divisor-line align-self-center" [ngStyle]="{'background-color': colorOfElements}"></div> -->
         <img src="{{iconProfilePath}}" class="icon-profile" alt="">
         <img src="{{icon4Path}}" class="icon-profile-drop-down" alt="">
     </div>
