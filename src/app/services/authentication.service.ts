@@ -14,7 +14,7 @@ export class AuthenticationService {
 
   signInWithEmailPassword(email: string, password: string): Observable<any> {
 
-    const url = environment.urlSignInEmailPassword;
+    const url = environment.urlAuthServer;
 
     return this.http.post(url, { email, password }, { responseType: 'json' }).pipe(
       map((dataResponse) => {

@@ -4,7 +4,7 @@ import { Sale } from '../entities/sale';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs';
 
-const urlBaseBackEnd = environment.urlBaseBackEnd;
+const urlBaseBackEnd = environment.urlBaseAppBackEnd;
 
 @Injectable({
   providedIn: 'root'

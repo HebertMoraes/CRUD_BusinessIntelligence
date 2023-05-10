@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
-    urlSignInEmailPassword:'https://api.trakto.io/auth/signin',
+    urlAuthServer:'http://127.0.0.1:3000/login',
     access_token:'access_token',
-    urlBaseBackEnd: 'http://127.0.0.1:8080/'
+    urlBaseAppBackEnd: 'http://127.0.0.1:8080/'
 };
