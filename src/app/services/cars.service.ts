@@ -23,4 +23,74 @@ export class CarsService {
       })
     )
   }
+
+  createCar(
+    Nome: string, 
+    Marca: string, 
+    Ano: number, 
+    Descricao: string, 
+    ValorMin: number, 
+    ValorMedia: number, 
+    ValorMax: number, 
+    DataCriacao: string, 
+    ImgUrl: string
+  ) {
+    return this.http.post<Car>(urlBaseBackEnd + "CreateCar", {
+      Nome, 
+      Marca,
+      Ano, 
+      Descricao, 
+      ValorMin, 
+      ValorMedia, 
+      ValorMax, 
+      DataCriacao, 
+      ImgUrl
+    }, { responseType: 'json' }).pipe(
+      catchError((err) => {
+        console.log(err);
+        throw 'Ops algo deu errado';
+      })
+    )
+  }
+
+  updateCar(
+    Id: number, 
+    Nome: string, 
+    Marca: string, 
+    Ano: number, 
+    Descricao: string, 
+    ValorMin: number, 
+    ValorMedia: number, 
+    valorMax: number,
+    DataCriacao: string, 
+    Imgurl: string
+  ) {
+    return this.http.post<Car>(urlBaseBackEnd + "UpdateCar",
+      {
+        Id, 
+        Nome,
+        Marca,
+        Ano,
+        Descricao,
+        ValorMin,
+        ValorMedia,
+        valorMax, 
+        DataCriacao, 
+        Imgurl
+      }, { responseType: 'json' }).pipe(
+        catchError((err) => {
+          console.log(err);
+          throw 'Ops algo deu errado';
+        })
+      )
+  }
+
+  deleteCar(Id: number) {
+    return this.http.post<Car>(urlBaseBackEnd + "DeleteCar", { Id }, { responseType: 'json' }).pipe(
+      catchError((err) => {
+        console.log(err);
+        throw 'Ops algo deu errado';
+      })
+    )
+  }
 }

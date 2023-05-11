@@ -1,1 +1,53 @@
-<p>manage-cars-background-page works!</p>
+<div class="cars-page d-flex flex-column">
+    <app-header 
+        [colorBackground]="'#FFFFFF'" 
+        [colorOfElements]="'#7183A6'" 
+        [enableChangeEnvironment]="false"
+        [iconChangeEnvironmentPath]="'assets/comum-assets/header/icon-changeEnvironment.svg'"
+        [icon1Path]="'assets/comum-assets/rentcars_logo.svg'"
+        [icon2Path]="'assets/comum-assets/header/calendar-icon-gray.svg'"
+        [icon3Path]="'assets/comum-assets/header/bell-icon-gray.svg'"
+        [iconProfilePath]="'assets/comum-assets/header/Alexa-icon.png'"
+        [icon4Path]="'assets/comum-assets/header/arrow-button-down-2-gray.svg'">
+    </app-header>
+    
+    <button class="btn-add-car align-self-center"
+    data-bs-toggle="modal" data-bs-target="#modalCreate">
+        Adicionar Carro
+    </button>
+
+    <div class="cars-block-background d-flex">
+        <app-car-edit-delete-block *ngFor="let car of carsToShow" 
+            [id]="car.Id"
+            [defaultImage]="'assets/cars-page/default-lazy-load.png'"
+            [image]="car.ImgUrl"
+            [name]="car.Nome"
+            [marca]="car.Marca"
+            [year]="car.Ano"
+            [valueMin]="car.ValorMin"
+            [value]="car.ValorMedia"
+            [valueMax]="car.ValorMax"
+            [description]="car.Descricao"
+            (deleteClick)="deleteCar($event)">
+        </app-car-edit-delete-block>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalCreate" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Adicionar Carro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <app-car-create-forms></app-car-create-forms>
+            </div>
+            <!-- <div class="modal-footer">
+                footer para botoes
+            </div> -->
+        </div>
+    </div>
+</div>
