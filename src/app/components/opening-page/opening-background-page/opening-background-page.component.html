@@ -4,10 +4,10 @@
         [colorOfElements]="'#000000'" 
         [enableChangeEnvironment]="false" 
         [icon1Path]="'assets/comum-assets/rentcars_logo.svg'" 
-        [icon2Path]="'assets/comum-assets/header/calendar-icon.svg'" 
-        [icon3Path]="'assets/comum-assets/header/bell-icon.svg'" 
+        [icon2Path]="'assets/comum-assets/header/calendar-icon-gray.svg'" 
+        [icon3Path]="'assets/comum-assets/header/bell-icon-gray.svg'" 
         [iconProfilePath]="'assets/comum-assets/header/Alexa-icon.png'"
-        [icon4Path]="'assets/comum-assets/header/arrow-button-down-2.svg'">
+        [icon4Path]="'assets/comum-assets/header/arrow-button-down-2-gray.svg'">
     </app-header>
     <div class="background container-fluid flex-grow-1 d-flex justify-content-center">
         <div class="d-flex align-self-center">
@@ -26,18 +26,18 @@
                 (clicked)="goToSeeSales()">
             </app-module-content>
             <app-module-content 
-                [circleBgPath]="'../../../assets/opening-page/bg-drawing.png'" 
-                [imageCenterPath]="'assets/opening-page/paint-1.png'"
-                [textTittle]="'Dashboard'"
-                [colorDivisorTittle]="'#F6B5FF'"
-                (clicked)="goToDashboard()">
-            </app-module-content>
-            <app-module-content 
                 [circleBgPath]="'../../../assets/opening-page/bg-youtube.png'" 
                 [imageCenterPath]="'assets/opening-page/badge-youtube.png'"
-                [textTittle]="'Imagens Carros'"
+                [textTittle]="'Estoque Carros'"
                 [colorDivisorTittle]="'#FF0000'"
                 (clicked)="goToCarsPage()">
+            </app-module-content>
+            <app-module-content 
+                [circleBgPath]="'../../../assets/opening-page/bg-drawing.png'" 
+                [imageCenterPath]="'assets/opening-page/paint-1.png'"
+                [textTittle]="'Gerenciar Carros'"
+                [colorDivisorTittle]="'#F6B5FF'"
+                (clicked)="goToManageCarsPage()">
             </app-module-content>
         </div>
     </div>

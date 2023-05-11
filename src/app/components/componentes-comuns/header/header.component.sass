@@ -33,20 +33,79 @@
             .date-text
                 margin-right: 32px
 
-        .bell-icon
+        .wrapper-bell-icon
             margin-inline: 36px
-            cursor: pointer
 
-        .icon-profile
-            width: 40px
-            height: 40px
-            margin-right: 8px
+            .bell-icon
+                cursor: pointer
+                margin-left: 36px
+
+            &:hover
+                .dropdown-notification-content 
+                    display: block
+
+        .profile-user
             margin-left: 32px
-            cursor: pointer
-        
-        .icon-profile-drop-down
-            cursor: pointer
+
+            .icon-profile
+                width: 40px
+                height: 40px
+                margin-right: 8px
+                cursor: pointer
+
+            .icon-profile-drop-down
+                cursor: pointer
+
+            &:hover
+                .dropdown-profile-content 
+                    display: block
 
         .divisor-line
             width: 1px
             height: 24px
+
+.dropdown-profile-content
+    display: none
+    position: absolute
+    background-color: #FFFFFF
+    width: 140px
+    height: 92px
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
+    z-index: 1
+    right: 65px
+    top: 59px
+
+    &:hover
+        display: block
+
+    div
+
+        .btn-dashboard
+            margin: 10px
+            cursor: pointer
+
+        .divisor
+            width: auto
+            margin-inline: 10px
+            height: 1px
+            background-color: #3131317d
+        
+        .logout
+            margin: 10px
+            cursor: pointer
+
+.dropdown-notification-content
+    display: none
+    position: absolute
+    background-color: #FFFFFF
+    width: 300px
+    min-height: 100px
+    max-height: 250px
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
+    z-index: 1
+    right: 187px
+    top: 60px
+    overflow-y: scroll
+
+    &:hover
+        display: block

@@ -40,7 +40,7 @@ export class LoginFrameComponent {
 
     this.authService.signInWithEmailPassword(email, password).subscribe({
       complete: () => {
-        this.router.navigate(['abertura']);
+        this.router.navigate(['home']);
       },
       error: (err) => {
         this.toastr.error(err);

@@ -20,11 +20,11 @@ export class OpeningBackgroundPageComponent {
     this.router.navigateByUrl('/minhas-vendas');
   }
 
-  goToDashboard() {
-    this.router.navigateByUrl('/dashboard-vendas');
-  }
-
   goToCarsPage() {
     this.router.navigateByUrl('/carros');
+  }
+
+  goToManageCarsPage() {
+    this.router.navigateByUrl('/gerenciar-carros');
   }
 }

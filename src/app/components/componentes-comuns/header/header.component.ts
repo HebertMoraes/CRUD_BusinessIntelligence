@@ -23,6 +23,14 @@ export class HeaderComponent {
   }
 
   goToOpeningPage(){
-    this.router.navigateByUrl('/abertura');
+    this.router.navigateByUrl('/home');
+  }
+
+  goToDashboardPage(){
+    this.router.navigateByUrl('/dashboard-vendas');
+  }
+
+  goToLoginPage() {
+    this.router.navigateByUrl('/login');
   }
 }

@@ -4,7 +4,9 @@ export class Car {
     Marca!: string
     Ano!: number
     Descricao!: string
-    Valor!: number
+    ValorMin!: number
+    ValorMedia!: number
+    ValorMax!: number
     DataCriacao!: string
     ImgUrl!: string
     DataAtualizacao!: string

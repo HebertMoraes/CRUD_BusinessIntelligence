@@ -18,7 +18,7 @@ const routes: Routes = [
       .then(m => m.LoginPageModule)
   }, 
   { 
-    path: 'abertura',
+    path: 'home',
     loadChildren: () => import('./components/opening-page/opening-page.module')
       .then(m => m.OpeningPageModule), 
     canActivate: [AuthGuard]
@@ -45,6 +45,12 @@ const routes: Routes = [
     path: 'carros',
     loadChildren: () => import('./components/cars-page/cars-page.module')
       .then(m => m.CarsPageModule), 
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'gerenciar-carros',
+    loadChildren: () => import('./components/manage-cars-page/manage-cars-page.module')
+      .then(m => m.ManageCarsPageModule), 
     canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: 'login' }

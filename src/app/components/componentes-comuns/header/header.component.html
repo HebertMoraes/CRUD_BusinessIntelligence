@@ -16,9 +16,30 @@
             <div class="date-text" [ngStyle]="{'color': colorOfElements}">08/02/2023</div>
         </div>
         <div class="divisor-line align-self-center" [ngStyle]="{'background-color': colorOfElements}"></div> -->
-        <img src="{{icon3Path}}" class="bell-icon" alt="">
+        
+        <div class="wrapper-bell-icon d-flex">
+            <img src="{{icon3Path}}" class="bell-icon" alt="">
+            <div class="dropdown-notification-content">
+                <a href="#">Link 1</a>
+                <br>
+                <a href="#">Link 2</a>
+                <br>
+                <a href="#">Link 3</a>
+            </div>
+        </div>
         <!-- <div class="divisor-line align-self-center" [ngStyle]="{'background-color': colorOfElements}"></div> -->
-        <img src="{{iconProfilePath}}" class="icon-profile" alt="">
-        <img src="{{icon4Path}}" class="icon-profile-drop-down" alt="">
+        
+        <div class="profile-user">
+            <img src="{{iconProfilePath}}" class="icon-profile" alt="">
+            <img src="{{icon4Path}}" class="icon-profile-drop-down" alt="">
+
+            <div class="dropdown-profile-content">
+                <div class="d-flex flex-column">
+                    <div class="btn-dashboard" (click)="goToDashboardPage()">Ver Dashboard</div>
+                    <div class="divisor"></div>
+                    <div class="logout" (click)="goToLoginPage()">Logout</div>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
