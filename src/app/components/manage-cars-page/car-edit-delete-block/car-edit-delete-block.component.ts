@@ -22,10 +22,17 @@ export class CarEditDeleteBlockComponent {
   @Output() updateClick: EventEmitter<any> = new EventEmitter<any>();
   @Output() deleteClick: EventEmitter<number> = new EventEmitter<number>();
 
+  selfCar!: Car;
   currentCarToUpdate!: Car;
 
-  setCarToUpdate() {
-    this.currentCarToUpdate = new Car(this.id, this.name, this.marca, this.year, this.description, 
+  ngOnInit() {
+    this.selfCar = new Car(this.id, this.name, this.marca, this.year, this.description, 
       this.valueMin, this.value, this.valueMax, this.image);
   }
+
+  // setCarToUpdate() {
+  //   console.log("setCarToUpdate setando");
+  //   this.currentCarToUpdate = new Car(this.id, this.name, this.marca, this.year, this.description, 
+  //     this.valueMin, this.value, this.valueMax, this.image);
+  // }
 }

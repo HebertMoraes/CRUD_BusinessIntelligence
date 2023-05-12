@@ -1,20 +1,20 @@
-<form class="create-car-block" [formGroup]="formCreateCar">
+<form class="update-car-block" [formGroup]="formUpdateCar">
 
     <div class="d-flex first-fields">
         <div class="form-floating">
-            <input type="text" class="form-control" id="f-nome-carro" placeholder="Insira o nome"
+            <input type="text" class="form-control" id="f-nome-carro{{carToUpdate.Id}}" placeholder="Insira o nome"
                 formControlName="nameCar">
-            <label for="f-nome-carro">Nome do Carro</label>
+            <label [attr.for]="'f-nome-carro' + carToUpdate.Id">Nome do Carro</label>
         </div>
         <div class="form-floating">
-            <input type="text" class="form-control" id="f-marca-carro" placeholder="Insira a marca"
+            <input type="text" class="form-control" id="f-marca-carro{{carToUpdate.Id}}" placeholder="Insira a marca"
                 formControlName="marcaCar">
-            <label for="f-marca-carro">Marca do Carro</label>
+            <label [attr.for]="'f-marca-carro' + carToUpdate.Id">Marca do Carro</label>
         </div>
         <div class="form-floating">
-            <input type="number" id="f-year-car" class="form-control" 
+            <input type="number" id="f-year-car{{carToUpdate.Id}}" class="form-control" 
             formControlName="year">
-            <label class="form-label" for="f-year-car">Ano do carro</label>
+            <label class="form-label" [attr.for]="'f-year-car' + carToUpdate.Id">Ano do carro</label>
         </div>
     </div>
 
@@ -22,18 +22,22 @@
         <div class="input-group">
             <span class="input-group-text">R$</span>
             <div class="form-floating">
-                <input type="number" id="f-value-min-car" class="form-control" 
+                <input type="number" id="f-value-min-car{{carToUpdate.Id}}" class="form-control" 
                 formControlName="valueMin">
-                <label class="form-label" for="f-value-min-car">Valor mínimo de venda</label>
+                <label class="form-label" [attr.for]="'f-value-min-car' + carToUpdate.Id">
+                    Valor mínimo de venda
+                </label>
             </div>
             <span class="input-group-text">,00</span>
         </div>
         <div class="input-group">
             <span class="input-group-text">R$</span>
             <div class="form-floating">
-                <input type="number" id="f-value-max-car" class="form-control" 
+                <input type="number" id="f-value-max-car{{carToUpdate.Id}}" class="form-control" 
                 formControlName="valueMax">
-                <label class="form-label" for="f-value-max-car">Valor máximo de venda</label>
+                <label class="form-label" [attr.for]="'f-value-max-car' + carToUpdate.Id">
+                    Valor máximo de venda
+                </label>
             </div>
             <span class="input-group-text">,00</span>
         </div>
@@ -41,15 +45,15 @@
 
     <div class="d-flex flex-column third-fields">
         <label>Observação</label>
-        <textarea class="form-control" aria-label="With textarea" id="f-description-car"
+        <textarea class="form-control" aria-label="With textarea" id="f-description-car{{carToUpdate.Id}}"
         formControlName="description"></textarea>
     </div>
 
     <div class="d-flex fourth-fields">
         <div class="form-floating">
-            <input type="text" class="form-control" id="f-img-url" placeholder="Insira a url da Imagem"
-                formControlName="imgUrl">
-            <label for="f-img-url">Url da imagem do carro</label>
+            <input type="text" class="form-control" id="f-img-url{{carToUpdate.Id}}" 
+                placeholder="Insira a url da Imagem" formControlName="imgUrl">
+            <label [attr.for]="'f-img-url' + carToUpdate.Id">Url da imagem do carro</label>
         </div>
     </div>
 
@@ -57,17 +61,21 @@
         <div class="input-group">
             <span class="input-group-text">R$</span>
             <div class="form-floating">
-                <input type="number" id="f-value-average-car" class="form-control" 
+                <input type="number" id="f-value-average-car{{carToUpdate.Id}}" class="form-control" 
                 formControlName="valueAverage">
-                <label class="form-label" for="f-value-average-car">Média de valor de Venda</label>
+                <label class="form-label" [attr.for]="'f-value-average-car' + carToUpdate.Id">
+                    Média de valor de Venda
+                </label>
             </div>
             <span class="input-group-text">,00</span>
         </div>
         <div class="acquisition-date">
-            <label for="f-acquisition-date-car">Data de aquisição do carro</label>
-            <input id="f-acquisition-date-car" class="form-control" type="date" 
+            <label [attr.for]="'f-acquisition-date-car' + carToUpdate.Id">
+                Data de aquisição do carro
+            </label>
+            <input id="f-acquisition-date-car{{carToUpdate.Id}}" class="form-control" type="date" 
             formControlName="acquisitionDate">
         </div>
-        <button type="button" class="btn btn-primary" (click)="submitCreateCar()">Adicionar Carro</button>
+        <button type="button" class="btn btn-primary" (click)="submitUpdateCar()">Atualizar Carro</button>
     </div>
 </form>

@@ -42,13 +42,13 @@ export class UpdateSaleBlockComponent {
 
   public gerateFormUpdateSale(): FormGroup {
     return this.formBuilder.group({
-      nameCar: ["", [Validators.required]],
-      numberCars: ["", [Validators.required]],
-      dateCriation: ["", [Validators.required]],
-      nameBuyer: ["", [Validators.required]],
-      nameSeller: ["", [Validators.required]],
-      descriptionSale: ["", [Validators.required]],
-      totalValueSale: ["", [Validators.required]],
+      nameCar: ["", [Validators.minLength(1)]],
+      numberCars: ["", [Validators.minLength(1)]],
+      dateCriation: ["", [Validators.minLength(1)]],
+      nameBuyer: ["", [Validators.minLength(1)]],
+      nameSeller: ["", [Validators.minLength(1)]],
+      descriptionSale: ["", [Validators.minLength(1)]],
+      totalValueSale: ["", [Validators.minLength(1)]],
     })
   }
 
@@ -56,20 +56,26 @@ export class UpdateSaleBlockComponent {
     const { nameCar, numberCars, dateCriation, nameBuyer, nameSeller,
       descriptionSale, totalValueSale } = this.formUpdateSale.value;
 
-    this.formUpdateSale.reset;
+    
 
-    this.salesService.updateSale(
-      this.currentSaleOnUpdate.Id,
-      nameCar, 
-      descriptionSale, 
-      numberCars, 
-      nameBuyer, 
-      nameSeller, 
-      totalValueSale, 
-      dateCriation
-    ).subscribe((res) => {
-      console.log(res);
-    }); 
+    if (this.formUpdateSale.valid) {
+
+      this.formUpdateSale.reset;
+      this.salesService.updateSale(
+        this.currentSaleOnUpdate.Id,
+        nameCar, 
+        descriptionSale, 
+        numberCars, 
+        nameBuyer, 
+        nameSeller, 
+        totalValueSale, 
+        dateCriation
+      ).subscribe((res) => {
+        console.log(res);
+      }); 
+    } else {
+      //pedir para completar os outros campos
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {

@@ -61,7 +61,7 @@ export class CarsService {
     Descricao: string, 
     ValorMin: number, 
     ValorMedia: number, 
-    valorMax: number,
+    ValorMax: number,
     DataCriacao: string, 
     Imgurl: string
   ) {
@@ -74,7 +74,7 @@ export class CarsService {
         Descricao,
         ValorMin,
         ValorMedia,
-        valorMax, 
+        ValorMax, 
         DataCriacao, 
         Imgurl
       }, { responseType: 'json' }).pipe(
