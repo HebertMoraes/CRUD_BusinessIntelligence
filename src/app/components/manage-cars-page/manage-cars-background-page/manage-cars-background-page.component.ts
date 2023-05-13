@@ -11,6 +11,8 @@ import { CarsService } from 'src/app/services/cars.service';
 export class ManageCarsBackgroundPageComponent {
   carsToShow!: Car[];
 
+  modalCreateCar!: any;
+
   constructor(private carService: CarsService, private toastr: ToastrService) {
 
   }
@@ -19,6 +21,7 @@ export class ManageCarsBackgroundPageComponent {
     this.carService.getAll().subscribe((cars) => {
       this.carsToShow = cars;
     });
+    this.modalCreateCar = document.getElementById("modalCreateCar");
   }
 
   deleteCar(id: number) {
@@ -35,5 +38,14 @@ export class ManageCarsBackgroundPageComponent {
         this.toastr.error("Algo deu errado ao deletar o carro, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
       }
     });
+  }
+
+  closeModalCreateCar() {
+    this.modalCreateCar.style.display = "none";
+    this.modalCreateCar.classList.remove("show");
+    document.getElementsByClassName("modal-backdrop")[0].outerHTML = " ";
+    document.body.style.removeProperty("overflow");
+    document.body.style.removeProperty("padding-right");
+    document.body.classList.remove("modal-open");
   }
 }

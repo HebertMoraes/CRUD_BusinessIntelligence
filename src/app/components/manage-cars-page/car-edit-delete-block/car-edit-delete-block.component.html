@@ -23,7 +23,7 @@
     </div>
     <div class="edit-delete d-flex justify-content-evenly">
         <button class="btn-edit" data-bs-toggle="modal" 
-        [attr.data-bs-target]="'#modalUpdate' + selfCar.Id">
+        [attr.data-bs-target]="'#modalUpdateCar' + selfCar.Id">
             Editar
         </button>
         <button class="btn-delete" (click)="deleteClick.emit(id)">Deletar</button>
@@ -32,7 +32,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="modalUpdate{{selfCar.Id}}" tabindex="-1">
+<div class="modal fade" id="modalUpdateCar{{selfCar.Id}}" tabindex="-1">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
@@ -40,7 +40,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <app-car-update-forms [carToUpdate]="selfCar"></app-car-update-forms>
+                <app-car-update-forms [carToUpdate]="selfCar"
+                (completedUpdateCar)="closeModalUpdateCar()"></app-car-update-forms>
             </div>
             <!-- <div class="modal-footer">
                 footer para botoes

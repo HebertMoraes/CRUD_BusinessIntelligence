@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/entities/car';
@@ -12,6 +12,8 @@ import { CarsService } from 'src/app/services/cars.service';
 export class CarUpdateFormsComponent {
 
   @Input() carToUpdate!: Car;
+
+  @Output() completedUpdateCar: EventEmitter<any> = new EventEmitter<any>();
 
   formUpdateCar!: FormGroup;
 
@@ -95,6 +97,7 @@ export class CarUpdateFormsComponent {
       ).subscribe({
         next: (res) => {
           this.toastr.success("Carro atualizado com sucesso!", undefined, { positionClass: 'toast-bottom-right' });
+          this.completedUpdateCar.emit();
         }, error: (err) => {
           this.toastr.error("Ops! algo deu errado ao atualizar o carro, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
         }

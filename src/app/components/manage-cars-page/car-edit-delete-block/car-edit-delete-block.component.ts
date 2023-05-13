@@ -25,8 +25,20 @@ export class CarEditDeleteBlockComponent {
   selfCar!: Car;
   currentCarToUpdate!: Car;
 
+  modalUpdateCar!: any;
+
   ngOnInit() {
     this.selfCar = new Car(this.id, this.name, this.marca, this.year, this.description, 
       this.valueMin, this.value, this.valueMax, this.image);
+  }
+
+  closeModalUpdateCar() {
+    this.modalUpdateCar = document.getElementById("modalUpdateCar" + this.selfCar.Id);
+    this.modalUpdateCar.style.display = "none";
+    this.modalUpdateCar.classList.remove("show");
+    document.getElementsByClassName("modal-backdrop")[0].outerHTML = " ";
+    document.body.style.removeProperty("overflow");
+    document.body.style.removeProperty("padding-right");
+    document.body.classList.remove("modal-open");
   }
 }

@@ -13,7 +13,7 @@ export class UpdateSaleBlockComponent {
 
   @Input() currentSaleOnUpdate!: Sale;
 
-  @Output() completedUpdate: EventEmitter<any> = new EventEmitter<any>();
+  @Output() completedUpdateSale: EventEmitter<any> = new EventEmitter<any>();
 
   formUpdateSale!: FormGroup;
 
@@ -71,7 +71,7 @@ export class UpdateSaleBlockComponent {
         //complete
         next: (res) => {
           this.toastr.success("Venda atualizada com sucesso!", undefined, { positionClass: 'toast-bottom-right' });
-          this.completedUpdate.emit();
+          this.completedUpdateSale.emit();
         },
         error: (err) => {
           this.toastr.error("Ops! algo deu errado ao atualizar a venda, tente novamente", undefined, { positionClass: 'toast-bottom-right' });

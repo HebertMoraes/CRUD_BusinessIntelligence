@@ -14,7 +14,7 @@ export class SeeSalesBlockComponent {
   txtDescricaoSale!: string;
   currentSaleOnUpdate!: Sale;
 
-  modalUpdate!: any;
+  modalUpdateSale!: any;
 
   constructor(private salesService: SalesService, private toastr: ToastrService) {
 
@@ -24,7 +24,7 @@ export class SeeSalesBlockComponent {
     this.salesService.getAll().subscribe((sales) => {
       this.allSales = sales;
     });
-    this.modalUpdate = document.getElementById("modalUpdate");
+    this.modalUpdateSale = document.getElementById("modalUpdateSale");
   }
 
   deleteSale(sale: Sale) {
@@ -40,16 +40,12 @@ export class SeeSalesBlockComponent {
     });
   }
 
-  closeModalUpdate() {
-
-    //ainda não finalizado
-
-    this.modalUpdate.style.display = "none";
-    this.modalUpdate.classList.remove("show");
+  closeModalUpdateSale() {
+    this.modalUpdateSale.style.display = "none";
+    this.modalUpdateSale.classList.remove("show");
     document.getElementsByClassName("modal-backdrop")[0].outerHTML = " ";
     document.body.style.removeProperty("overflow");
     document.body.style.removeProperty("padding-right");
     document.body.classList.remove("modal-open");
-    // !.style.display = "none";
   }
 }

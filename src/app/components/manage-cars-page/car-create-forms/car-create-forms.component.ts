@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CarsService } from 'src/app/services/cars.service';
@@ -10,6 +10,8 @@ import { CarsService } from 'src/app/services/cars.service';
 })
 export class CarCreateFormsComponent {
   formCreateCar!: FormGroup;
+
+  @Output() createdCar: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,6 +51,7 @@ export class CarCreateFormsComponent {
           //complete
           next: (res) => {
             this.toastr.success("Cadastrado carro com sucesso!", undefined, { positionClass: 'toast-bottom-right' });
+            this.createdCar.emit();
           },
           error: (err) => {
             this.toastr.error("Ops! algo deu errado ao inserir novo carro, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
