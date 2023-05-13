@@ -22,11 +22,11 @@
         </div>
     </div>
     <div class="edit-delete d-flex justify-content-evenly">
-        <button class="btn-edit" data-bs-toggle="modal" 
+        <button class="btn-edit btn btn-secondary" data-bs-toggle="modal" 
         [attr.data-bs-target]="'#modalUpdateCar' + selfCar.Id">
             Editar
         </button>
-        <button class="btn-delete" (click)="deleteClick.emit(id)">Deletar</button>
+        <button class="btn-delete btn btn-secondary" (click)="deleteClick.emit(id)">Deletar</button>
     </div>
 </div>
 
