@@ -14,6 +14,8 @@ export class SeeSalesBlockComponent {
   txtDescricaoSale!: string;
   currentSaleOnUpdate!: Sale;
 
+  modalUpdate!: any;
+
   constructor(private salesService: SalesService, private toastr: ToastrService) {
 
   }
@@ -21,7 +23,8 @@ export class SeeSalesBlockComponent {
   ngOnInit() {
     this.salesService.getAll().subscribe((sales) => {
       this.allSales = sales;
-    })
+    });
+    this.modalUpdate = document.getElementById("modalUpdate");
   }
 
   deleteSale(sale: Sale) {
@@ -35,5 +38,18 @@ export class SeeSalesBlockComponent {
         this.toastr.error("Algo deu errado ao deletar a venda, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
       }
     });
+  }
+
+  closeModalUpdate() {
+
+    //ainda não finalizado
+
+    this.modalUpdate.style.display = "none";
+    this.modalUpdate.classList.remove("show");
+    document.getElementsByClassName("modal-backdrop")[0].outerHTML = " ";
+    document.body.style.removeProperty("overflow");
+    document.body.style.removeProperty("padding-right");
+    document.body.classList.remove("modal-open");
+    // !.style.display = "none";
   }
 }

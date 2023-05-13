@@ -35,6 +35,5 @@ export class ManageCarsBackgroundPageComponent {
         this.toastr.error("Algo deu errado ao deletar o carro, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
       }
     });
-    
   }
 }

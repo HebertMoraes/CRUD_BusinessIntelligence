@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Sale } from 'src/app/entities/sale';
@@ -12,6 +12,9 @@ import { SalesService } from 'src/app/services/sales.service';
 export class UpdateSaleBlockComponent {
 
   @Input() currentSaleOnUpdate!: Sale;
+
+  @Output() completedUpdate: EventEmitter<any> = new EventEmitter<any>();
+
   formUpdateSale!: FormGroup;
 
   fieldNameCar!: HTMLInputElement;
@@ -68,6 +71,7 @@ export class UpdateSaleBlockComponent {
         //complete
         next: (res) => {
           this.toastr.success("Venda atualizada com sucesso!", undefined, { positionClass: 'toast-bottom-right' });
+          this.completedUpdate.emit();
         },
         error: (err) => {
           this.toastr.error("Ops! algo deu errado ao atualizar a venda, tente novamente", undefined, { positionClass: 'toast-bottom-right' });

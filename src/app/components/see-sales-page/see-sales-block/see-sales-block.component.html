@@ -66,7 +66,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <app-update-sale-block [currentSaleOnUpdate]="currentSaleOnUpdate"></app-update-sale-block>
+                <app-update-sale-block [currentSaleOnUpdate]="currentSaleOnUpdate"
+                (completedUpdate)="closeModalUpdate()"></app-update-sale-block>
             </div>
             <!-- <div class="modal-footer">
                 footer para botoes
