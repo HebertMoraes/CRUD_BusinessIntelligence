@@ -21,10 +21,14 @@ export class SeeSalesBlockComponent {
   }
 
   ngOnInit() {
+    this.refreshAllSalesList();
+    this.modalUpdateSale = document.getElementById("modalUpdateSale");
+  }
+
+  refreshAllSalesList() {
     this.salesService.getAll().subscribe((sales) => {
       this.allSales = sales;
     });
-    this.modalUpdateSale = document.getElementById("modalUpdateSale");
   }
 
   deleteSale(sale: Sale) {
@@ -47,5 +51,6 @@ export class SeeSalesBlockComponent {
     document.body.style.removeProperty("overflow");
     document.body.style.removeProperty("padding-right");
     document.body.classList.remove("modal-open");
+    this.refreshAllSalesList();
   }
 }

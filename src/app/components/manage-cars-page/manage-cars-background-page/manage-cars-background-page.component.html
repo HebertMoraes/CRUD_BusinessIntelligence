@@ -28,7 +28,8 @@
             [value]="car.ValorMedia"
             [valueMax]="car.ValorMax"
             [description]="car.Descricao"
-            (deleteClick)="deleteCar($event)">
+            (deleteClick)="deleteCar($event)"
+            (updatedCar)="refreshAllCarsList()">
         </app-car-edit-delete-block>
     </div>
 </div>

@@ -18,10 +18,14 @@ export class ManageCarsBackgroundPageComponent {
   }
 
   ngOnInit() {
+    this.refreshAllCarsList();
+    this.modalCreateCar = document.getElementById("modalCreateCar");
+  }
+
+  refreshAllCarsList() {
     this.carService.getAll().subscribe((cars) => {
       this.carsToShow = cars;
     });
-    this.modalCreateCar = document.getElementById("modalCreateCar");
   }
 
   deleteCar(id: number) {
@@ -33,7 +37,7 @@ export class ManageCarsBackgroundPageComponent {
     this.carService.deleteCar(id).subscribe({
       next: (res) => {
         this.toastr.warning("Carro deletado", undefined, { positionClass: 'toast-bottom-right' });
-      }, 
+      },
       error: (err) => {
         this.toastr.error("Algo deu errado ao deletar o carro, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
       }
@@ -47,5 +51,6 @@ export class ManageCarsBackgroundPageComponent {
     document.body.style.removeProperty("overflow");
     document.body.style.removeProperty("padding-right");
     document.body.classList.remove("modal-open");
+    this.refreshAllCarsList();
   }
 }

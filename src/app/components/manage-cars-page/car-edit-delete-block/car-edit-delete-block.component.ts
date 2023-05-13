@@ -19,7 +19,7 @@ export class CarEditDeleteBlockComponent {
   @Input() valueMax!: number;
   @Input() description!: string;
 
-  @Output() updateClick: EventEmitter<any> = new EventEmitter<any>();
+  @Output() updatedCar: EventEmitter<any> = new EventEmitter<any>();
   @Output() deleteClick: EventEmitter<number> = new EventEmitter<number>();
 
   selfCar!: Car;
@@ -40,5 +40,6 @@ export class CarEditDeleteBlockComponent {
     document.body.style.removeProperty("overflow");
     document.body.style.removeProperty("padding-right");
     document.body.classList.remove("modal-open");
+    this.updatedCar.emit();
   }
 }
