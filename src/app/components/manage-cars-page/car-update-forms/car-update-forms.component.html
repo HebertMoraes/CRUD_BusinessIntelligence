@@ -2,18 +2,18 @@
 
     <div class="d-flex first-fields">
         <div class="form-floating">
-            <input type="text" class="form-control" id="f-nome-carro{{carToUpdate.Id}}" placeholder="Insira o nome"
-                formControlName="nameCar">
+            <input type="text" class="form-control inpu1-first-fields" 
+            id="f-nome-carro{{carToUpdate.Id}}" formControlName="nameCar">
             <label [attr.for]="'f-nome-carro' + carToUpdate.Id">Nome do Carro</label>
         </div>
         <div class="form-floating">
-            <input type="text" class="form-control" id="f-marca-carro{{carToUpdate.Id}}" placeholder="Insira a marca"
-                formControlName="marcaCar">
+            <input type="text" class="form-control inpu2-first-fields" 
+            id="f-marca-carro{{carToUpdate.Id}}" formControlName="marcaCar">
             <label [attr.for]="'f-marca-carro' + carToUpdate.Id">Marca do Carro</label>
         </div>
         <div class="form-floating">
-            <input type="number" id="f-year-car{{carToUpdate.Id}}" class="form-control" 
-            formControlName="year">
+            <input type="number" class="form-control inpu3-first-fields" 
+            id="f-year-car{{carToUpdate.Id}}"  formControlName="year">
             <label class="form-label" [attr.for]="'f-year-car' + carToUpdate.Id">Ano do carro</label>
         </div>
     </div>

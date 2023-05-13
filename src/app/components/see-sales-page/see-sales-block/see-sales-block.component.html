@@ -9,8 +9,8 @@
                 <th>Nome Vendedor</th>
                 <th>Valor</th>
                 <th>Data Criação</th>
-                <th>Observações</th>
-                <th>Opções</th>
+                <th class="text-center">Observações</th>
+                <th class="text-center">Opções</th>
             </tr>
         </thead>
         <tbody>
@@ -22,19 +22,22 @@
                 <td>{{sale.NomeVendedor}}</td>
                 <td>{{sale.Valor}}</td>
                 <td>{{sale.DataCriacao}}</td>
-                <button type="button" class="btn btn-primary" 
-                data-bs-toggle="modal" data-bs-target="#modalDescricao"
-                (click)="txtDescricaoSale = sale.Descricao">
-                    Ver Observações
-                </button>
-                <td>
-                    <button data-bs-toggle="modal" data-bs-target="#modalUpdateSale"
+                <td class="text-center">
+                    <button type="button" class="buttons-table btn-description" 
+                    data-bs-toggle="modal" data-bs-target="#modalDescricao"
+                    (click)="txtDescricaoSale = sale.Descricao">
+                        Ver Observações
+                    </button>
+                </td>
+                <td class="text-center">
+                    <button data-bs-toggle="modal" data-bs-target="#modalUpdateSale" class="buttons-table"
                     (click)="currentSaleOnUpdate = sale">
                         <img src="assets/see-all-sales-page/icons8-actualizar.svg" 
-                        style="height: 24px; width: 24px;">
+                        style="height: 23px; width: 23px;">
                     </button>
-                    <button (click)="deleteSale(sale)">
-                        <img src="assets/see-all-sales-page/icons8-lixo.svg">
+                    <button class="buttons-table" (click)="deleteSale(sale)">
+                        <img src="assets/see-all-sales-page/icons8-lixo.svg" 
+                        style="height: 22px; width: 22px;">
                     </button>
                 </td>
             </tr>
