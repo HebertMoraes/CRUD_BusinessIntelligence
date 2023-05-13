@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/entities/car';
 import { CarsService } from 'src/app/services/cars.service';
 
@@ -10,7 +11,7 @@ import { CarsService } from 'src/app/services/cars.service';
 export class ManageCarsBackgroundPageComponent {
   carsToShow!: Car[];
 
-  constructor(private carService: CarsService) {
+  constructor(private carService: CarsService, private toastr: ToastrService) {
 
   }
 
@@ -26,6 +27,14 @@ export class ManageCarsBackgroundPageComponent {
         this.carsToShow.splice(this.carsToShow.indexOf(car), 1);
       }
     });
-    this.carService.deleteCar(id).subscribe();
+    this.carService.deleteCar(id).subscribe({
+      next: (res) => {
+        this.toastr.warning("Carro deletado", undefined, { positionClass: 'toast-bottom-right' });
+      }, 
+      error: (err) => {
+        this.toastr.error("Algo deu errado ao deletar o carro, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
+      }
+    });
+    
   }
 }

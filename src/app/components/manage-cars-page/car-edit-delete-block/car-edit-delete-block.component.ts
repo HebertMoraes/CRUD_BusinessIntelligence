@@ -29,10 +29,4 @@ export class CarEditDeleteBlockComponent {
     this.selfCar = new Car(this.id, this.name, this.marca, this.year, this.description, 
       this.valueMin, this.value, this.valueMax, this.image);
   }
-
-  // setCarToUpdate() {
-  //   console.log("setCarToUpdate setando");
-  //   this.currentCarToUpdate = new Car(this.id, this.name, this.marca, this.year, this.description, 
-  //     this.valueMin, this.value, this.valueMax, this.image);
-  // }
 }

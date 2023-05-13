@@ -14,14 +14,14 @@ export class CreateSaleBlockComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private toastr: ToastrService, 
+    private toastr: ToastrService,
     private salesService: SalesService) {
 
     this.formCreateSale = this.gerateFormCreateSale();
   }
 
   ngOnInit() {
-    
+
   }
 
   public gerateFormCreateSale(): FormGroup {
@@ -37,21 +37,32 @@ export class CreateSaleBlockComponent {
   }
 
   submitCreateSale() {
-    const { nameCar, numberCars, dateCriation, nameBuyer, nameSeller,
-      descriptionSale, totalValueSale } = this.formCreateSale.value;
+    if (this.formCreateSale.valid) {
+      const { nameCar, numberCars, dateCriation, nameBuyer, nameSeller,
+        descriptionSale, totalValueSale } = this.formCreateSale.value;
 
-    this.formCreateSale.reset;
+      this.formCreateSale.reset;
+      
+      this.salesService.createSale(
+        nameCar,
+        descriptionSale,
+        numberCars,
+        nameBuyer,
+        nameSeller,
+        totalValueSale,
+        dateCriation
+      ).subscribe({
+        //complete
+        next: (res) => {
+          this.toastr.success("Cadastrado venda com sucesso!", undefined, { positionClass: 'toast-bottom-right' });
+        }, 
+        error: (err) => {
+          this.toastr.error("Ops! algo deu errado ao criar venda, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
+        }
+      });
 
-    this.salesService.createSale(
-      nameCar, 
-      descriptionSale, 
-      numberCars, 
-      nameBuyer, 
-      nameSeller, 
-      totalValueSale, 
-      dateCriation
-    ).subscribe((res) => {
-      console.log(res);
-    }); 
+    } else {
+      this.toastr.warning("Preencha todos os campos", undefined, { positionClass: 'toast-bottom-right' });
+    }
   }
 }

@@ -44,7 +44,7 @@ export class UpdateSaleBlockComponent {
     return this.formBuilder.group({
       nameCar: ["", [Validators.minLength(1)]],
       numberCars: ["", [Validators.minLength(1)]],
-      dateCriation: ["", [Validators.minLength(1)]],
+      dateCriation: ["", [Validators.minLength(1), Validators.required]],
       nameBuyer: ["", [Validators.minLength(1)]],
       nameSeller: ["", [Validators.minLength(1)]],
       descriptionSale: ["", [Validators.minLength(1)]],
@@ -53,28 +53,28 @@ export class UpdateSaleBlockComponent {
   }
 
   submitUpdateSale() {
-    const { nameCar, numberCars, dateCriation, nameBuyer, nameSeller,
-      descriptionSale, totalValueSale } = this.formUpdateSale.value;
-
-    
-
     if (this.formUpdateSale.valid) {
-
       this.formUpdateSale.reset;
       this.salesService.updateSale(
         this.currentSaleOnUpdate.Id,
-        nameCar, 
-        descriptionSale, 
-        numberCars, 
-        nameBuyer, 
-        nameSeller, 
-        totalValueSale, 
-        dateCriation
-      ).subscribe((res) => {
-        console.log(res);
+        this.fieldNameCar.value, 
+        this.fieldDescription.value, 
+        Number(this.fieldQuantityCar.value), 
+        this.fieldNameBuyer.value, 
+        this.fieldNameSeller.value, 
+        Number(this.fieldTotalValue.value), 
+        this.fieldDateCreation.value
+      ).subscribe({
+        //complete
+        next: (res) => {
+          this.toastr.success("Venda atualizada com sucesso!", undefined, { positionClass: 'toast-bottom-right' });
+        },
+        error: (err) => {
+          this.toastr.error("Ops! algo deu errado ao atualizar a venda, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
+        }
       }); 
     } else {
-      //pedir para completar os outros campos
+      this.toastr.warning("Preencha todos os campos", undefined, { positionClass: 'toast-bottom-right' });
     }
   }
 
