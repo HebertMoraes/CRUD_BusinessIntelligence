@@ -9,7 +9,8 @@
         <div class="circle-inside" (click)="this.clicked.emit()"
         [ngStyle]="{'background-image': 'url(' + circleBgPath + ')'}">
             <img src="{{imageCenterPath}}" alt="" (click)="this.clicked.emit()"
-            [ngStyle]="{'height': '234px', 'width': '240px', 'margin-left': '10px'}">
+            [ngStyle]="{'width': widthImageCenter, 'height': heightImageCenter, 
+            'margin-left': marginLeftImageCenter, 'margin-top': marginTopImageCenter}">
         </div>
     </span>
 </div>
