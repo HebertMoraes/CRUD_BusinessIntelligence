@@ -2,14 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './security/auth.guard';
 
-// const routes: Routes = [
-//   { path: 'login', component: LoginBackgroundPageComponent },
-//   { path: 'abertura', component: OpeningBackgroundPageComponent},
-//   { path: 'materiais-didaticos', component: CoursewareBackgroundPageComponent},
-//   { path: 'ver-todos-materiais', component: AllDesignBackgroundPageComponent},
-  
-//   { path: '**', redirectTo: 'login' }
-// ];
 
 const routes: Routes = [
   { 
@@ -53,7 +45,11 @@ const routes: Routes = [
       .then(m => m.ManageCarsPageModule), 
     canActivate: [AuthGuard]
   },
-  { path: '**', redirectTo: 'login' }
+  { 
+    path: '**',
+    loadChildren: () => import('./components/not-found-page/not-found-page.module')
+      .then(m => m.NotFoundPageModule)
+  },
 ];
 
 @NgModule({

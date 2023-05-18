@@ -1,0 +1,22 @@
+<div class="not-found-page d-flex flex-column">
+    <app-header 
+        [colorBackground]="'#FFFFFF'" 
+        [colorOfElements]="'#000000'" 
+        [enableChangeEnvironment]="false" 
+        [icon1Path]="'assets/comum-assets/rentcars_logo.svg'" 
+        [icon2Path]="'assets/comum-assets/header/calendar-icon-gray.svg'" 
+        [icon3Path]="'assets/comum-assets/header/bell-icon-gray.svg'" 
+        [iconProfilePath]="'assets/comum-assets/header/Alexa-icon.png'"
+        [icon4Path]="'assets/comum-assets/header/arrow-button-down-2-gray.svg'">
+    </app-header>
+
+    <div class="background d-flex flex-column align-items-center">
+        <div class="error-tittle">
+            404
+        </div>
+        <div class="error-message">
+            Page not found.
+        </div>
+        <button class="btn-go-home btn btn-primary" routerLink="/home">Go back to Home Page</button>
+    </div>
+</div>
