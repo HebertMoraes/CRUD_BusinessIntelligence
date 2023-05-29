@@ -3,6 +3,8 @@ import { Car } from '../entities/car';
 import { catchError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment.development';
+import { AuthenticationService } from './authentication.service';
+import { HttpErrorResponse } from '@angular/common/http'
 
 const urlBaseBackEnd = environment.urlBaseAppBackEnd;
 
@@ -11,17 +13,22 @@ const urlBaseBackEnd = environment.urlBaseAppBackEnd;
 })
 export class CarsService {
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private authService: AuthenticationService) { 
 
   }
 
   getAll() {
     return this.http.get<Car[]>(urlBaseBackEnd + "GetAllCars", { responseType: 'json' }).pipe(
-      catchError((err) => {
-        console.log(err);
-        throw 'Ops algo deu errado';
+      catchError((err: HttpErrorResponse) => {
+        console.log("1");
+        if (err.status === 498) {
+          console.log("2");
+          throw "Token inválido";
+        } else {
+          throw "Ops algo deu errado";
+        }
       })
-    )
+    ); 
   }
 
   createCar(
@@ -47,7 +54,7 @@ export class CarsService {
       ImgUrl
     }, { responseType: 'json' }).pipe(
       catchError((err) => {
-        console.log(err);
+        // console.log(err);
         throw 'Ops algo deu errado';
       })
     )
@@ -79,7 +86,7 @@ export class CarsService {
         Imgurl
       }, { responseType: 'json' }).pipe(
         catchError((err) => {
-          console.log(err);
+          // console.log(err);
           throw 'Ops algo deu errado';
         })
       )
@@ -88,7 +95,7 @@ export class CarsService {
   deleteCar(Id: number) {
     return this.http.post<Car>(urlBaseBackEnd + "DeleteCar", { Id }, { responseType: 'json' }).pipe(
       catchError((err) => {
-        console.log(err);
+        // console.log(err);
         throw 'Ops algo deu errado';
       })
     )

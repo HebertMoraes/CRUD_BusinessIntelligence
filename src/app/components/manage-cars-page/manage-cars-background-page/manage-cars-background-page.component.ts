@@ -24,7 +24,9 @@ export class ManageCarsBackgroundPageComponent {
 
   refreshAllCarsList() {
     this.carService.getAll().subscribe((cars) => {
-      this.carsToShow = cars;
+      if (cars) {
+        this.carsToShow = cars;
+      }
     });
   }
 

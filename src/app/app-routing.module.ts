@@ -46,6 +46,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { 
+    path: '',
+    redirectTo: 'home', 
+    pathMatch: 'full'
+  }, 
+  { 
     path: '**',
     loadChildren: () => import('./components/not-found-page/not-found-page.module')
       .then(m => m.NotFoundPageModule)
