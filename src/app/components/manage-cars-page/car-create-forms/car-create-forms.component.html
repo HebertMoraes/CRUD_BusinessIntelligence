@@ -13,7 +13,7 @@
         </div>
         <div class="form-floating">
             <input type="number" id="f-year-car" class="form-control" 
-            formControlName="year">
+            formControlName="year" min="0" (keydown)="verifyInputNumber($event)">
             <label class="form-label" for="f-year-car">Ano do carro</label>
         </div>
     </div>
@@ -23,7 +23,7 @@
             <span class="input-group-text">R$</span>
             <div class="form-floating">
                 <input type="number" id="f-value-min-car" class="form-control" 
-                formControlName="valueMin">
+                formControlName="valueMin" min="0" (keydown)="verifyInputNumber($event)">
                 <label class="form-label" for="f-value-min-car">Valor mínimo de venda</label>
             </div>
             <span class="input-group-text">,00</span>
@@ -32,7 +32,7 @@
             <span class="input-group-text">R$</span>
             <div class="form-floating">
                 <input type="number" id="f-value-max-car" class="form-control" 
-                formControlName="valueMax">
+                formControlName="valueMax" min="0" (keydown)="verifyInputNumber($event)">
                 <label class="form-label" for="f-value-max-car">Valor máximo de venda</label>
             </div>
             <span class="input-group-text">,00</span>
@@ -58,7 +58,7 @@
             <span class="input-group-text">R$</span>
             <div class="form-floating">
                 <input type="number" id="f-value-average-car" class="form-control" 
-                formControlName="valueAverage">
+                formControlName="valueAverage" min="0" (keydown)="verifyInputNumber($event)">
                 <label class="form-label" for="f-value-average-car">Média de valor de Venda</label>
             </div>
             <span class="input-group-text">,00</span>

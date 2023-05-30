@@ -13,7 +13,7 @@
         </div>
         <div class="form-floating">
             <input type="number" class="form-control inpu3-first-fields" 
-            id="f-year-car{{carToUpdate.Id}}"  formControlName="year">
+            id="f-year-car{{carToUpdate.Id}}" formControlName="year" min="0" (keydown)="verifyInputNumber($event)">
             <label class="form-label" [attr.for]="'f-year-car' + carToUpdate.Id">Ano do carro</label>
         </div>
     </div>
@@ -23,7 +23,7 @@
             <span class="input-group-text">R$</span>
             <div class="form-floating">
                 <input type="number" id="f-value-min-car{{carToUpdate.Id}}" class="form-control" 
-                formControlName="valueMin">
+                formControlName="valueMin" min="0" (keydown)="verifyInputNumber($event)">
                 <label class="form-label" [attr.for]="'f-value-min-car' + carToUpdate.Id">
                     Valor mínimo de venda
                 </label>
@@ -34,7 +34,7 @@
             <span class="input-group-text">R$</span>
             <div class="form-floating">
                 <input type="number" id="f-value-max-car{{carToUpdate.Id}}" class="form-control" 
-                formControlName="valueMax">
+                formControlName="valueMax" min="0" (keydown)="verifyInputNumber($event)">
                 <label class="form-label" [attr.for]="'f-value-max-car' + carToUpdate.Id">
                     Valor máximo de venda
                 </label>
@@ -62,7 +62,7 @@
             <span class="input-group-text">R$</span>
             <div class="form-floating">
                 <input type="number" id="f-value-average-car{{carToUpdate.Id}}" class="form-control" 
-                formControlName="valueAverage">
+                formControlName="valueAverage" min="0" (keydown)="verifyInputNumber($event)">
                 <label class="form-label" [attr.for]="'f-value-average-car' + carToUpdate.Id">
                     Média de valor de Venda
                 </label>

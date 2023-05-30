@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Car } from 'src/app/entities/car';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CarsService } from 'src/app/services/cars.service';
 import { SalesService } from 'src/app/services/sales.service';
 
 @Component({
@@ -12,18 +14,52 @@ import { SalesService } from 'src/app/services/sales.service';
 export class CreateSaleBlockComponent {
 
   formCreateSale!: FormGroup;
+  carsToSell!: Car[];
 
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private salesService: SalesService, 
-    private authService: AuthenticationService) {
+    private authService: AuthenticationService, 
+    private carService: CarsService) {
 
     this.formCreateSale = this.gerateFormCreateSale();
   }
 
   ngOnInit() {
-
+    this.carService.getAll().subscribe({
+      next: (cars) => {
+        this.carsToSell = cars;
+      },
+      error: (err) => {
+        console.log("3");
+        if (err === "Token inválido") {
+          console.log("4");
+          this.authService.updateAcessToken().subscribe({
+            complete: () => {
+              console.log("6");
+              this.carService.getAll().subscribe({
+                next: (cars) => {
+                  console.log("7");
+                  this.carsToSell = cars;
+                },
+                error: (err) => {
+                  this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+                    { positionClass: 'toast-bottom-right' });
+                }
+              });
+            },
+            error: (err) => {
+              this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+                { positionClass: 'toast-bottom-right' });
+            }
+          });
+        } else {
+          this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+            { positionClass: 'toast-bottom-right' });
+        }
+      }
+    });
   }
 
   public gerateFormCreateSale(): FormGroup {
@@ -102,6 +138,12 @@ export class CreateSaleBlockComponent {
 
     } else {
       this.toastr.warning("Preencha todos os campos", undefined, { positionClass: 'toast-bottom-right' });
+    }
+  }
+
+  verifyInputNumber(event: KeyboardEvent) {
+    if (event.key === "-" || event.key === "+" || event.key === "e" || event.key === "," || event.key === ".") {
+      event.preventDefault();
     }
   }
 }

@@ -133,4 +133,10 @@ export class UpdateSaleBlockComponent {
       this.fieldTotalValue.value = changes['currentSaleOnUpdate'].currentValue.Valor;
     }
   }
+
+  verifyInputNumber(event: KeyboardEvent) {
+    if (event.key === "-" || event.key === "+" || event.key === "e" || event.key === "," || event.key === ".") {
+      event.preventDefault();
+    }
+  }
 }

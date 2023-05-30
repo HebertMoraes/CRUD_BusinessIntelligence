@@ -90,4 +90,10 @@ export class CarCreateFormsComponent {
       this.toastr.warning("Preencha todos os campos", undefined, { positionClass: 'toast-bottom-right' });
     }
   }
+
+  verifyInputNumber(event: KeyboardEvent) {
+    if (event.key === "-" || event.key === "+" || event.key === "e" || event.key === "," || event.key === ".") {
+      event.preventDefault();
+    }
+  }
 }
