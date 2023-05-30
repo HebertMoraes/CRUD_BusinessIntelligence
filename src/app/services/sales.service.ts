@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Sale } from '../entities/sale';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs';
 
 const urlBaseBackEnd = environment.urlBaseAppBackEnd;
@@ -17,11 +17,16 @@ export class SalesService {
 
   getAll() {
     return this.http.get<Sale[]>(urlBaseBackEnd + "GetAllSales", { responseType: 'json' }).pipe(
-      catchError((err) => {
-        console.log(err);
-        throw 'Ops algo deu errado';
+      catchError((err: HttpErrorResponse) => {
+        console.log("1");
+        if (err.status === 498) {
+          console.log("2");
+          throw "Token inválido";
+        } else {
+          throw "Ops algo deu errado";
+        }
       })
-    )
+    ); 
   }
 
   getById(Id: number) {
@@ -52,9 +57,14 @@ export class SalesService {
         Valor,
         DataCriacao
       }, { responseType: 'json' }).pipe(
-        catchError((err) => {
-          console.log(err);
-          throw 'Ops algo deu errado';
+        catchError((err: HttpErrorResponse) => {
+          console.log("1");
+          if (err.status === 498) {
+            console.log("2");
+            throw "Token inválido";
+          } else {
+            throw "Ops algo deu errado";
+          }
         })
       )
   }
@@ -89,10 +99,15 @@ export class SalesService {
 
   deleteSale(Id: number) {
     return this.http.post<Sale>(urlBaseBackEnd + "DeleteSale", { Id }, { responseType: 'json' }).pipe(
-      catchError((err) => {
-        console.log(err);
-        throw 'Ops algo deu errado';
-      })
+      catchError((err: HttpErrorResponse) => {
+          console.log("1");
+          if (err.status === 498) {
+            console.log("2");
+            throw "Token inválido";
+          } else {
+            throw "Ops algo deu errado";
+          }
+        })
     )
   }
 }

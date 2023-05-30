@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { SalesService } from 'src/app/services/sales.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class CreateSaleBlockComponent {
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private salesService: SalesService) {
+    private salesService: SalesService, 
+    private authService: AuthenticationService) {
 
     this.formCreateSale = this.gerateFormCreateSale();
   }
@@ -40,9 +42,8 @@ export class CreateSaleBlockComponent {
     if (this.formCreateSale.valid) {
       const { nameCar, numberCars, dateCriation, nameBuyer, nameSeller,
         descriptionSale, totalValueSale } = this.formCreateSale.value;
-
       this.formCreateSale.reset;
-      
+
       this.salesService.createSale(
         nameCar,
         descriptionSale,
@@ -54,10 +55,48 @@ export class CreateSaleBlockComponent {
       ).subscribe({
         //complete
         next: (res) => {
-          this.toastr.success("Cadastrado venda com sucesso!", undefined, { positionClass: 'toast-bottom-right' });
-        }, 
-        error: (err) => {
-          this.toastr.error("Ops! algo deu errado ao criar venda, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
+          console.log("sucesso facil");
+          this.toastr.success("Cadastrado venda com sucesso!", undefined, 
+            { positionClass: 'toast-bottom-right' });
+        },
+        error: (err) => { 
+          console.log("3");
+          if (err === "Token inválido") {
+            console.log("4");
+            this.authService.updateAcessToken().subscribe({
+              complete: () => {
+                console.log("6");
+                this.salesService.createSale(
+                  nameCar,
+                  descriptionSale,
+                  numberCars,
+                  nameBuyer,
+                  nameSeller,
+                  totalValueSale,
+                  dateCriation
+                ).subscribe({
+                  next: (res) => {
+                    console.log("7");
+                    this.toastr.success("Cadastrado venda com sucesso!", undefined, 
+                      { positionClass: 'toast-bottom-right' });
+                  },
+                  error: (err) => {
+                    console.log(err);
+                    this.toastr.error("Ops! algo deu errado ao criar venda, tente novamente", undefined, 
+                      { positionClass: 'toast-bottom-right' });
+                  }
+                })
+              },
+              error: (err) => {
+                console.log(err);
+                this.toastr.error("Ops! algo deu errado ao criar venda, tente novamente", undefined, 
+                  { positionClass: 'toast-bottom-right' });
+              }
+            });
+          } else {
+            this.toastr.error("Ops! algo deu errado ao criar venda, tente novamente", undefined, 
+              { positionClass: 'toast-bottom-right' });
+          }
         }
       });
 

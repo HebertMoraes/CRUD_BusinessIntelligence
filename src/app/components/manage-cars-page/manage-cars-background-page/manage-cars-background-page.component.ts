@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/entities/car';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CarsService } from 'src/app/services/cars.service';
 
 @Component({
@@ -13,7 +14,10 @@ export class ManageCarsBackgroundPageComponent {
 
   modalCreateCar!: any;
 
-  constructor(private carService: CarsService, private toastr: ToastrService) {
+  constructor(
+    private carService: CarsService, 
+    private toastr: ToastrService, 
+    private authService: AuthenticationService) {
 
   }
 
@@ -23,9 +27,44 @@ export class ManageCarsBackgroundPageComponent {
   }
 
   refreshAllCarsList() {
-    this.carService.getAll().subscribe((cars) => {
-      if (cars) {
-        this.carsToShow = cars;
+    // this.carService.getAll().subscribe((cars) => {
+    //   if (cars) {
+    //     this.carsToShow = cars;
+    //   }
+    // });
+
+    this.carService.getAll().subscribe({
+      next: (cars) => {
+        if (cars) {
+          this.carsToShow = cars;
+        }
+      },
+      error: (err) => {
+        console.log("3");
+        if (err === "Token inválido") {
+          console.log("4");
+          this.authService.updateAcessToken().subscribe({
+            complete: () => {
+              console.log("6");
+              this.carService.getAll().subscribe({
+                next: (cars) => {
+                  console.log("7");
+                  if (cars) {
+                    this.carsToShow = cars;
+                  }
+                },
+                error: (err) => {
+                  console.log("Algo deu errado, tente novamente");
+                }
+              });
+            },
+            error: (err) => {
+              console.log("Algo deu errado, tente novamente");
+            }
+          });
+        } else {
+          console.log("Algo deu errado, tente novamente");
+        }
       }
     });
   }

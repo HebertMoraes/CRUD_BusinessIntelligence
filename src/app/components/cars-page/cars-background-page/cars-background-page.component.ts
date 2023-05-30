@@ -31,10 +31,18 @@ export class CarsBackgroundPageComponent {
                 next: (cars) => {
                   console.log("7");
                   this.carsToShow = cars;
+                },
+                error: (err) => {
+                  console.log("Algo deu errado, tente novamente");
                 }
               });
             },
+            error: (err) => {
+              console.log("Algo deu errado, tente novamente");
+            }
           });
+        } else {
+          console.log("Algo deu errado, tente novamente");
         }
       }
     });
