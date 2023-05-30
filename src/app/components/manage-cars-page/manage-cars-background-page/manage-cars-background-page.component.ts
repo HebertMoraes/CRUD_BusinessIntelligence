@@ -27,12 +27,6 @@ export class ManageCarsBackgroundPageComponent {
   }
 
   refreshAllCarsList() {
-    // this.carService.getAll().subscribe((cars) => {
-    //   if (cars) {
-    //     this.carsToShow = cars;
-    //   }
-    // });
-
     this.carService.getAll().subscribe({
       next: (cars) => {
         if (cars) {
@@ -54,16 +48,19 @@ export class ManageCarsBackgroundPageComponent {
                   }
                 },
                 error: (err) => {
-                  console.log("Algo deu errado, tente novamente");
+                  this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+                    { positionClass: 'toast-bottom-right' });
                 }
               });
             },
             error: (err) => {
-              console.log("Algo deu errado, tente novamente");
+              this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+                { positionClass: 'toast-bottom-right' });
             }
           });
         } else {
-          console.log("Algo deu errado, tente novamente");
+          this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+            { positionClass: 'toast-bottom-right' });
         }
       }
     });
@@ -75,12 +72,37 @@ export class ManageCarsBackgroundPageComponent {
         this.carsToShow.splice(this.carsToShow.indexOf(car), 1);
       }
     });
+    
     this.carService.deleteCar(id).subscribe({
       next: (res) => {
         this.toastr.warning("Carro deletado", undefined, { positionClass: 'toast-bottom-right' });
       },
       error: (err) => {
-        this.toastr.error("Algo deu errado ao deletar o carro, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
+        console.log("3");
+        if (err === "Token inválido") {
+          console.log("4");
+          this.authService.updateAcessToken().subscribe({
+            complete: () => {
+              console.log("6");
+              this.carService.deleteCar(id).subscribe({
+                next: (res) => {
+                  this.toastr.warning("Carro deletado", undefined, { positionClass: 'toast-bottom-right' });
+                },
+                error: (err) => {
+                  this.toastr.error("Ops! algo deu errado ao deletar o carro, tente novamente", undefined, 
+                    { positionClass: 'toast-bottom-right' });
+                }
+              });
+            },
+            error: (err) => {
+              this.toastr.error("Ops! algo deu errado ao deletar o carro, tente novamente", undefined, 
+                { positionClass: 'toast-bottom-right' });
+            }
+          });
+        } else {
+          this.toastr.error("Ops! algo deu errado ao deletar o carro, tente novamente", undefined, 
+            { positionClass: 'toast-bottom-right' });
+        }
       }
     });
   }

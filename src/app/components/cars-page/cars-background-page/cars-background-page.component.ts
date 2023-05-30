@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/entities/car';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CarsService } from 'src/app/services/cars.service';
@@ -11,7 +12,10 @@ import { CarsService } from 'src/app/services/cars.service';
 export class CarsBackgroundPageComponent {
   carsToShow!: Car[];
 
-  constructor(private carService: CarsService, private authService: AuthenticationService) {
+  constructor(
+    private carService: CarsService, 
+    private authService: AuthenticationService, 
+    private toastr: ToastrService) {
 
   }
 
@@ -33,16 +37,19 @@ export class CarsBackgroundPageComponent {
                   this.carsToShow = cars;
                 },
                 error: (err) => {
-                  console.log("Algo deu errado, tente novamente");
+                  this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+                    { positionClass: 'toast-bottom-right' });
                 }
               });
             },
             error: (err) => {
-              console.log("Algo deu errado, tente novamente");
+              this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+                { positionClass: 'toast-bottom-right' });
             }
           });
         } else {
-          console.log("Algo deu errado, tente novamente");
+          this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+            { positionClass: 'toast-bottom-right' });
         }
       }
     });

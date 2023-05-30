@@ -18,8 +18,8 @@ export class SeeSalesBlockComponent {
   modalUpdateSale!: any;
 
   constructor(
-    private salesService: SalesService, 
-    private toastr: ToastrService, 
+    private salesService: SalesService,
+    private toastr: ToastrService,
     private authService: AuthenticationService) {
 
   }
@@ -47,16 +47,19 @@ export class SeeSalesBlockComponent {
                   this.allSales = sales;
                 },
                 error: (err) => {
-                  console.log("Algo deu errado, tente novamente");
+                  this.toastr.error("Ops! algo deu errado ao listar as vendas, tente novamente", undefined, 
+                    { positionClass: 'toast-bottom-right' });
                 }
               });
             },
             error: (err) => {
-              console.log("Algo deu errado, tente novamente");
+              this.toastr.error("Ops! algo deu errado ao listar as vendas, tente novamente", undefined, 
+                { positionClass: 'toast-bottom-right' });
             }
           });
         } else {
-          console.log("Algo deu errado, tente novamente");
+          this.toastr.error("Ops! algo deu errado ao listar as vendas, tente novamente", undefined, 
+            { positionClass: 'toast-bottom-right' });
         }
       }
     });
@@ -65,7 +68,7 @@ export class SeeSalesBlockComponent {
   deleteSale(sale: Sale) {
     var indiceToRemove = this.allSales.indexOf(sale);
     this.allSales.splice(indiceToRemove, 1);
-    
+
     this.salesService.deleteSale(sale.Id).subscribe({
       next: (res) => {
         this.toastr.warning("Venda deletada", undefined, { positionClass: 'toast-bottom-right' });
@@ -83,18 +86,18 @@ export class SeeSalesBlockComponent {
                   this.toastr.warning("Venda deletada", undefined, { positionClass: 'toast-bottom-right' });
                 },
                 error: (err) => {
-                  this.toastr.error("Algo deu errado ao deletar a venda, tente novamente", 
+                  this.toastr.error("Algo deu errado ao deletar a venda, tente novamente",
                     undefined, { positionClass: 'toast-bottom-right' });
                 }
               });
             },
             error: (err) => {
-              this.toastr.error("Algo deu errado ao deletar a venda, tente novamente", 
+              this.toastr.error("Algo deu errado ao deletar a venda, tente novamente",
                 undefined, { positionClass: 'toast-bottom-right' });
             }
           });
         } else {
-          this.toastr.error("Algo deu errado ao deletar a venda, tente novamente", 
+          this.toastr.error("Algo deu errado ao deletar a venda, tente novamente",
             undefined, { positionClass: 'toast-bottom-right' });
         }
       }

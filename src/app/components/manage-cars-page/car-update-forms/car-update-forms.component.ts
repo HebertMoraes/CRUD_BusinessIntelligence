@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/entities/car';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CarsService } from 'src/app/services/cars.service';
 
 @Component({
@@ -30,7 +31,8 @@ export class CarUpdateFormsComponent {
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private carService: CarsService) {
+    private carService: CarsService, 
+    private authService: AuthenticationService) {
 
     this.formUpdateCar = this.gerateFormCreateCar();
   }
@@ -81,8 +83,8 @@ export class CarUpdateFormsComponent {
   submitUpdateCar() {
 
     if (this.formUpdateCar.valid) {
-
       this.formUpdateCar.reset;
+
       this.carService.updateCar(
         this.carToUpdate.Id,
         this.fieldNameCar.value,
@@ -96,10 +98,50 @@ export class CarUpdateFormsComponent {
         this.fieldImgUrl.value
       ).subscribe({
         next: (res) => {
-          this.toastr.success("Carro atualizado com sucesso!", undefined, { positionClass: 'toast-bottom-right' });
+          this.toastr.success("Carro atualizado com sucesso!", undefined, 
+            { positionClass: 'toast-bottom-right' });
           this.completedUpdateCar.emit();
-        }, error: (err) => {
-          this.toastr.error("Ops! algo deu errado ao atualizar o carro, tente novamente", undefined, { positionClass: 'toast-bottom-right' });
+        },
+        error: (err) => {
+          console.log("3");
+          if (err === "Token inválido") {
+            console.log("4");
+            this.authService.updateAcessToken().subscribe({
+              complete: () => {
+                console.log("6");
+                this.carService.updateCar(
+                  this.carToUpdate.Id,
+                  this.fieldNameCar.value,
+                  this.fieldMarcaCar.value,
+                  Number(this.fieldYearCar.value),
+                  this.fieldDescription.value,
+                  Number(this.fieldValueMin.value),
+                  Number(this.fieldValueMedia.value),
+                  Number(this.fieldValueMax.value),
+                  this.fieldDateAcquisition.value,
+                  this.fieldImgUrl.value
+                ).subscribe({
+                  next: (res) => {
+                    console.log("7");
+                    this.toastr.success("Carro atualizado com sucesso!", undefined, 
+                      { positionClass: 'toast-bottom-right' });
+                    this.completedUpdateCar.emit();
+                  },
+                  error: (err) => {
+                    this.toastr.error("Ops! algo deu errado ao atualizar o carro, tente novamente",
+                      undefined, { positionClass: 'toast-bottom-right' });
+                  }
+                });
+              },
+              error: (err) => {
+                this.toastr.error("Ops! algo deu errado ao atualizar o carro, tente novamente",
+                  undefined, { positionClass: 'toast-bottom-right' });
+              }
+            });
+          } else {
+            this.toastr.error("Ops! algo deu errado ao atualizar o carro, tente novamente",
+              undefined, { positionClass: 'toast-bottom-right' });
+          }
         }
       });
     } else {
