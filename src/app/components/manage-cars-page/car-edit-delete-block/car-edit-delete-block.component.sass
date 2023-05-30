@@ -1,6 +1,6 @@
 .car-edit-delete-block
     width: 300px
-    height: 460px
+    height: auto
     background-color: #FFFFFF
     margin: 15px
     box-shadow: 3px 3px 3px 1px #0000001c
@@ -17,21 +17,54 @@
         padding: 13px 13px 0px 13px
         height: 100%
 
-        .name
-            margin-bottom: 8px
+        .name-year
 
-        .value
-            margin-bottom: 8px
+            .name
+                margin-bottom: 8px
+
+            .year
+                margin-left: auto
+
+        // .value
+        //     margin-bottom: 8px
+        .value-media
+            margin-bottom: 13px
+            
+            .value-text
+                border-radius: 5px
+                border: 1px solid #228dff
+                padding: 0px 5px 0px 5px
+                background-color: #228dff
+                color: #FFFFFF
         
         .value-min-max
-            margin-bottom: 5px
-            // margin-top: auto
+            margin-bottom: 13px
+            width: 100%
 
-            .value-max
+            .value-text
+                border-radius: 5px
+                border: 1px solid #228dff
+                padding: 0px 5px 0px 5px
+                background-color: #228dff
+                color: #FFFFFF
+            
+            .value-text-max
+                border-radius: 5px
+                border: 1px solid #228dff
+                padding: 0px 5px 0px 5px
+                background-color: #228dff
+                color: #FFFFFF
                 margin-left: auto
 
         .description-car
-            margin-bottom: 5px
+            height: 75px
+            overflow-y: auto
+            overflow-x: hidden
+            line-break: anywhere
+
+            border-radius: 5px
+            border: 1px solid #D7DAE0
+            padding: 0px 5px 0px 5px
 
         .marca-e-ano
             // margin-bottom: 5px
@@ -41,11 +74,12 @@
                 margin-left: auto
 
     .edit-delete
+        height: 75px
 
         .btn-edit
-            padding: 10px
+            padding: 0px 10px 0px 10px
             margin: 15px 10px 15px 10px
 
         .btn-delete
-            padding: 10px
+            padding: 0px 10px 0px 10px
             margin: 15px 10px 15px 10px

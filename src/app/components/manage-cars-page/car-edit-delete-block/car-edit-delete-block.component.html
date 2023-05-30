@@ -3,22 +3,32 @@
         <img [defaultImage]="defaultImage" [lazyLoad]="image" />
     </div>
     <div class="info-car d-flex flex-column">
-        <div class="name">
-            {{name}}
+        <div class="name-year d-flex">
+            <div class="name">
+                {{name}}
+            </div>
+            <div class="year">
+                Ano: {{year}}
+            </div>
         </div>
-        <div class="value">
-            Média do valor: {{value}}
-        </div>
-        <div class="value-min-max d-flex">
-            <div class="value-min">V. Min: R${{valueMin}}</div>
-            <div class="value-max">V. Max: R${{valueMax}}</div>
+        <div class="d-flex flex-column justify-content-center">
+            <div class="value-media d-flex justify-content-center">
+                <div class="value-text">
+                    Média do valor: R${{value}}
+                </div>
+            </div>
+
+            <div class="value-min-max d-flex">
+                <div class="value-text">
+                    V. Min: R${{valueMin}}
+                </div>
+                <div class="value-text-max">
+                    V. Max: R${{valueMax}}
+                </div>
+            </div>
         </div>
         <div class="description-car">
             {{description}}
-        </div>
-        <div class="marca-e-ano d-flex">
-            <div class="marca">Marca: {{marca}}</div>
-            <div class="ano">Ano: {{year}}</div>
         </div>
     </div>
     <div class="edit-delete d-flex justify-content-evenly">
