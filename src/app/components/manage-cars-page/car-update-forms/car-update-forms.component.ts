@@ -17,8 +17,9 @@ export class CarUpdateFormsComponent {
   @Output() completedUpdateCar: EventEmitter<any> = new EventEmitter<any>();
 
   formUpdateCar!: FormGroup;
+  carsToChangeName!: Car[];
 
-  fieldNameCar!: HTMLInputElement;
+  fieldNameCar!: HTMLSelectElement;
   fieldMarcaCar!: HTMLInputElement;
   fieldYearCar!: HTMLInputElement;
   fieldValueMin!: HTMLInputElement;
@@ -38,11 +39,43 @@ export class CarUpdateFormsComponent {
   }
 
   ngOnInit() {
-
+    this.carService.getAll().subscribe({
+      next: (cars) => {
+        this.carsToChangeName = cars;
+      },
+      error: (err) => {
+        console.log("3");
+        if (err === "Token inválido") {
+          console.log("4");
+          this.authService.updateAcessToken().subscribe({
+            complete: () => {
+              console.log("6");
+              this.carService.getAll().subscribe({
+                next: (cars) => {
+                  console.log("7");
+                  this.carsToChangeName = cars;
+                },
+                error: (err) => {
+                  this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+                    { positionClass: 'toast-bottom-right' });
+                }
+              });
+            },
+            error: (err) => {
+              this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+                { positionClass: 'toast-bottom-right' });
+            }
+          });
+        } else {
+          this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+            { positionClass: 'toast-bottom-right' });
+        }
+      }
+    });
   }
 
   ngAfterViewInit() {
-    this.fieldNameCar = document.getElementById('f-nome-carro' + this.carToUpdate.Id) as HTMLInputElement;
+    this.fieldNameCar = document.getElementById('f-nome-carro' + this.carToUpdate.Id) as HTMLSelectElement;
     this.fieldMarcaCar = document.getElementById('f-marca-carro' + this.carToUpdate.Id) as HTMLInputElement;
     this.fieldYearCar = document.getElementById('f-year-car' + this.carToUpdate.Id) as HTMLInputElement;
     this.fieldValueMin = document.getElementById('f-value-min-car' + this.carToUpdate.Id) as HTMLInputElement;
