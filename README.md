@@ -23,5 +23,4 @@ Porém este arquivo do PowerBI também obtém os dados da API de recursos, e com
 &nbsp; &nbsp; &nbsp; 4️⃣ Na opção "parâmetro de cabeçalho", insira o campo "Authorization" com valor "Bearer + SEU_TOKEN_JWT". <br>
   
 Depois que foi feita toda a alteração desejada no arquivo do PowerBI, é necessário publicá-lo, um recurso da microsoft. Para fazer isto, vá na aba "Arquivo" dentro do PowerBI desktop, selecione "Publicar" e siga os passos. E note que será necessário alterar a tag HTML do iframe do dashboard, para mostrar o dashboard correto. Dentro das opções de exportar dashboard no PowerBI web que será aberto, pegue o código de embed correto e substitua a tag. A tag HTML do dashboard embed fica em: <br> 
-`CRUD_BusinessIntelligence\src\app\components\dashboard-page\dashboard-background-page\dashboard-background-page.component.html` <br> 
-linha 15.
+`src\app\components\dashboard-page\dashboard-background-page\dashboard-background-page.component.html` linha 15.
