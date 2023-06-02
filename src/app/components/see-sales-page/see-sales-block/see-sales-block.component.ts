@@ -33,6 +33,7 @@ export class SeeSalesBlockComponent {
     this.salesService.getAll().subscribe({
       next: (sales) => {
         this.allSales = sales;
+        this.removeTimeInAllSales();
       },
       error: (err) => {
         console.log("3");
@@ -45,6 +46,7 @@ export class SeeSalesBlockComponent {
                 next: (sales) => {
                   console.log("7");
                   this.allSales = sales;
+                  this.removeTimeInAllSales();
                 },
                 error: (err) => {
                   this.toastr.error("Ops! algo deu errado ao listar as vendas, tente novamente", undefined, 
@@ -62,6 +64,12 @@ export class SeeSalesBlockComponent {
             { positionClass: 'toast-bottom-right' });
         }
       }
+    });
+  }
+
+  removeTimeInAllSales() {
+    this.allSales.forEach(sale => {
+      sale.DataCriacao = new Date(sale.DataCriacao).toDateString();
     });
   }
 
