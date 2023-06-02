@@ -54,31 +54,6 @@ export class AuthenticationService {
     );
   }
 
-  // public async updateAcessToken() {
-  //   const url = environment.urlAuthServerRefresh;
-  //   const refresh_token = this.getRefreshToken();
-
-  //   return await this.http.post(url, { refresh_token }, { responseType: 'json' }).pipe(
-  //     map(async (dataResponse) => {
-  //       console.log("2");
-  //       await new Promise((resolve, reject) => {
-  //         this.setUpdatedAcessTokenLocalStorage(dataResponse);
-  //         console.log("3");
-  //         resolve("tetris");
-  //       });
-  //       console.log("4");
-  //     }), 
-  //     catchError((err: HttpErrorResponse) => {
-  //       console.log("alou alou");
-  //       //Se retornou erro 498, significa que até o refresh_token está expirado
-
-  //       this.removeAcessTokenLocalStorage();
-  //       this.removeRefreshTokenLocalStorage();
-  //       throw 'Falha ao efetuar a requisição.';
-  //     })
-  //   ).subscribe(() => { console.log("subscribe da requisição post do updateAcessToken") });
-  // }
-
   public getAcessToken(): string | null {
     return localStorage.getItem("access_token");
   }
@@ -88,13 +63,13 @@ export class AuthenticationService {
   }
 
   private setTokenLocalStorage(dataResponse: any): void {
-    const { access_token, refresh_token, firebase_token } = dataResponse;
+    const { access_token, refresh_token } = dataResponse;
     localStorage.setItem("access_token", access_token);
     localStorage.setItem("refresh_token", refresh_token);
   }
 
   private setUpdatedAcessTokenLocalStorage(dataResponse: any): void {
-    const { access_token, refresh_token, firebase_token } = dataResponse;
+    const { access_token, refresh_token } = dataResponse;
     localStorage.setItem("access_token", access_token);
   }
 
