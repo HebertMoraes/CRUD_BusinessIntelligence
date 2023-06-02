@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Car } from 'src/app/entities/car';
 import { Sale } from 'src/app/entities/sale';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CarsService } from 'src/app/services/cars.service';
 import { SalesService } from 'src/app/services/sales.service';
 
 @Component({
@@ -17,8 +19,9 @@ export class UpdateSaleBlockComponent {
   @Output() completedUpdateSale: EventEmitter<any> = new EventEmitter<any>();
 
   formUpdateSale!: FormGroup;
+  carsToSell!: Car[];
 
-  fieldNameCar!: HTMLInputElement;
+  fieldNameCar!: HTMLSelectElement;
   fieldQuantityCar!: HTMLInputElement;
   fieldDateCreation!: HTMLInputElement;
   fieldNameBuyer!: HTMLInputElement;
@@ -30,19 +33,54 @@ export class UpdateSaleBlockComponent {
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
     private salesService: SalesService, 
-    private authService: AuthenticationService) {
+    private authService: AuthenticationService, 
+    private carService: CarsService) {
 
     this.formUpdateSale = this.gerateFormUpdateSale();
   }
 
   ngOnInit() {
-    this.fieldNameCar = document.getElementById('f-nome-carro') as HTMLInputElement;
+    this.fieldNameCar = document.getElementById('f-name-carro') as HTMLSelectElement;
     this.fieldQuantityCar = document.getElementById('f-quantidade-carro') as HTMLInputElement;
     this.fieldDateCreation = document.getElementById('f-data-criacao') as HTMLInputElement;
     this.fieldNameBuyer = document.getElementById('f-nome-comprador') as HTMLInputElement;
     this.fieldNameSeller = document.getElementById('f-nome-vendedor') as HTMLInputElement;
     this.fieldDescription = document.getElementById('f-descricao') as HTMLTextAreaElement;
     this.fieldTotalValue = document.getElementById('f-valor-total') as HTMLInputElement;
+
+    this.carService.getAll().subscribe({
+      next: (cars) => {
+        this.carsToSell = cars;
+      },
+      error: (err) => {
+        console.log("3");
+        if (err === "Token inválido") {
+          console.log("4");
+          this.authService.updateAcessToken().subscribe({
+            complete: () => {
+              console.log("6");
+              this.carService.getAll().subscribe({
+                next: (cars) => {
+                  console.log("7");
+                  this.carsToSell = cars;
+                },
+                error: (err) => {
+                  this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+                    { positionClass: 'toast-bottom-right' });
+                }
+              });
+            },
+            error: (err) => {
+              this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+                { positionClass: 'toast-bottom-right' });
+            }
+          });
+        } else {
+          this.toastr.error("Ops! algo deu errado ao listar os carros, tente novamente", undefined, 
+            { positionClass: 'toast-bottom-right' });
+        }
+      }
+    });
   }
 
   public gerateFormUpdateSale(): FormGroup {

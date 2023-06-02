@@ -2,9 +2,14 @@
 
     <div class="d-flex first-fields">
         <div class="form-floating">
-            <input type="text" class="form-control" id="f-nome-carro" 
+            <!-- <input type="text" class="form-control" id="f-nome-carro" 
                 formControlName="nameCar">
-            <label for="f-nome-carro">Nome do Carro</label>
+            <label for="f-nome-carro">Nome do Carro</label> -->
+            <select class="form-select" id="f-name-carro" formControlName="nameCar">
+                <option selected> </option>
+                <option *ngFor="let car of carsToSell" [value]="car.Nome">{{car.Nome}}</option>
+            </select>
+            <label for="f-name-carro">Carro a vender</label>
         </div>
         <div class="form-floating">
             <input type="number" id="f-quantidade-carro" class="form-control" 
