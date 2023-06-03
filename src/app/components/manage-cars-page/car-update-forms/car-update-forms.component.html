@@ -2,12 +2,12 @@
 
     <div class="d-flex first-fields">
         <div class="form-floating">
-            <input type="text" class="form-control inpu1-first-fields" 
+            <input type="text" class="form-control inpu1-first-fields" autocomplete="off"
             id="f-nome-carro{{carToUpdate.Id}}" formControlName="nameCar">
             <label [attr.for]="'f-nome-carro' + carToUpdate.Id">Nome do Carro</label>
         </div>
         <div class="form-floating">
-            <input type="text" class="form-control inpu2-first-fields" 
+            <input type="text" class="form-control inpu2-first-fields" autocomplete="off"
             id="f-marca-carro{{carToUpdate.Id}}" formControlName="marcaCar">
             <label [attr.for]="'f-marca-carro' + carToUpdate.Id">Marca do Carro</label>
         </div>
@@ -52,7 +52,7 @@
     <div class="d-flex fourth-fields">
         <div class="form-floating">
             <input type="text" class="form-control" id="f-img-url{{carToUpdate.Id}}" 
-                placeholder="Insira a url da Imagem" formControlName="imgUrl">
+                placeholder="Insira a url da Imagem" formControlName="imgUrl" autocomplete="off">
             <label [attr.for]="'f-img-url' + carToUpdate.Id">Url da imagem do carro</label>
         </div>
     </div>
